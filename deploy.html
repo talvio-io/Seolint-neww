@@ -109,6 +109,13 @@
     <div class="done" id="doneOpen"></div>
   </div>
 
+  <div class="step"><div class="t">08 · Set Pass base URI (Pass NFT images)</div>
+    <input id="passUriIn" value="https://seolint.xyz/nft/pass/metadata/">
+    <button id="btnPassURI" disabled>SET PASS BASE URI</button>
+    <p>The one setting left from launch night: without it, Pass NFTs carry no image or name in wallets. Set it once — each Pass's metadata JSON will live at this base + tokenId + ".json" and is generated as Passes are minted. No Pass has been minted yet, so nothing is missing today; this simply completes the set.</p>
+    <div class="done" id="donePassURI"></div>
+  </div>
+
   <div class="step"><div class="t">Log</div><div id="log">Ready.</div></div>
 </div>
 
@@ -218,7 +225,7 @@ async function deploy(data, label){
 }
 function enableFlow(){
   const on = !!account;
-  for (const id of ["btnToken","btnPass","btnScan","btnClaims","btnWire","btnFund","btnCheckFund","btnURI","btnScanOpen","btnScanClose","btnPassOpen"]) {
+  for (const id of ["btnToken","btnPass","btnScan","btnClaims","btnWire","btnFund","btnCheckFund","btnURI","btnScanOpen","btnScanClose","btnPassOpen","btnPassURI"]) {
     $(id).disabled = !on;
   }
 }
@@ -359,6 +366,10 @@ $("btnFund").onclick = async () => {
 $("btnURI").onclick = async () => {
   try { await sendTx({ from: account, to: addr("addrScan"), data: SEL.setBaseURI + encString($("uriIn").value.trim()) }); log("Scan base URI set.", "ok"); }
   catch (e) { log("setBaseURI failed: " + (e.message || e), "err"); }
+};
+$("btnPassURI").onclick = async () => {
+  try { await sendTx({ from: account, to: addr("addrPass"), data: SEL.setBaseURI + encString($("passUriIn").value.trim()) }); $("donePassURI").textContent = "PASS BASE URI SET."; log("Pass base URI set.", "ok"); }
+  catch (e) { log("Pass setBaseURI failed: " + (e.message || e), "err"); }
 };
 $("btnScanOpen").onclick = async () => {
   try { await sendTx({ from: account, to: addr("addrScan"), data: SEL.setMintOpen + encBool(true) }); $("doneOpen").textContent = "SCAN MINT IS OPEN."; log("SCAN MINT IS OPEN.", "ok"); }

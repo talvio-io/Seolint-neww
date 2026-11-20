@@ -52,7 +52,7 @@
   </div>
 
   <div class="step"><div class="t">Address book</div>
-    <p>Filled in automatically as you deploy. If you reload the page, paste the addresses back here — the later steps read from these boxes. Each address has a copy button; send all six to Muse when you are done.</p>
+    <p>Filled in automatically as you deploy — and saved in this browser, so if the page reloads or you exit by accident, the addresses come back on their own. The later steps read from these boxes. Each address has a copy button; send all six to Muse when you are done.</p>
     <label>$LINT token</label><div class="addr"><input id="addrToken" placeholder="0x…"><button class="ghost" data-copy="addrToken">COPY</button></div>
     <label>Seolint Pass (SPASS)</label><div class="addr"><input id="addrPass" placeholder="0x…"><button class="ghost" data-copy="addrPass">COPY</button></div>
     <label>Seolint Scan (SCAN)</label><div class="addr"><input id="addrScan" placeholder="0x…"><button class="ghost" data-copy="addrScan">COPY</button></div>
@@ -133,6 +133,15 @@ const SEL = {
 const FUND_WEI = 2000000000n * (10n ** 18n); // 2,000,000,000 LINT
 const $ = id => document.getElementById(id);
 let inj = null, account = null;
+
+// ---- address book persistence: survives reload / accidental exit ----
+const BOOK_KEY = "seolint-deploy-book-v1";
+const BOOK_IDS = ["addrToken", "addrPass", "addrScan", "addrClaim1", "addrClaim2", "addrClaim3", "uriIn"];
+function saveBook(){ try { const o = {}; BOOK_IDS.forEach(id => { const el = $(id); if (el) o[id] = el.value; }); localStorage.setItem(BOOK_KEY, JSON.stringify(o)); } catch(e){} }
+function loadBook(){ try { const o = JSON.parse(localStorage.getItem(BOOK_KEY) || "{}"); BOOK_IDS.forEach(id => { const el = $(id); if (el && o[id]) el.value = o[id]; }); } catch(e){} }
+loadBook();
+BOOK_IDS.forEach(id => { const el = $(id); if (el) el.addEventListener("input", saveBook); });
+setInterval(saveBook, 1000);
 
 function getInjected(){
   if (window.ethereum) {

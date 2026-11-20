@@ -392,6 +392,19 @@ h2.head::after{content:"";display:block;width:54px;height:2px;background:var(--a
 .free-prompt-box.show{display:block}
 .free-prompt-box .fp-t{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
 
+/* live on-chain panel */
+.live-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-top:18px}
+.live-grid>div{background:var(--panel);padding:13px 14px}
+.live-grid .v{font-family:"Anton",sans-serif;font-size:23px;color:var(--bone);line-height:1.1}
+.live-grid .v small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+.live-grid .v.gold{color:var(--gold-bright)}
+.live-grid .kk{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.wallet-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px;border-top:1px solid var(--line-soft);padding-top:18px}
+.wallet-row .waddr{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--bone-dim);word-break:break-all}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:disabled:hover{border-color:rgba(246,238,216,.55);color:var(--bone);background:transparent}
+@media (max-width:640px){ .live-grid{grid-template-columns:1fr 1fr} }
+
 footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px}
 .foot-mega{font-family:"Anton",sans-serif;font-size:clamp(64px,12vw,150px);line-height:.95;text-transform:uppercase;letter-spacing:.01em}
 .foot-mega em{font-style:normal;color:var(--accent)}
@@ -432,10 +445,10 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="48" r="45" fill="#0B0906"/><ellipse cx="48" cy="48" rx="18" ry="43" stroke="#B9974F" stroke-width="1" stroke-dasharray="1 4" opacity=".55"/><ellipse cx="48" cy="48" rx="43" ry="17" stroke="#B9974F" stroke-width="1" stroke-dasharray="1 4" opacity=".4"/><g fill="#F4EBD4" opacity=".5"><circle cx="25" cy="29" r="1.7"/><circle cx="21" cy="36" r="1.3"/><circle cx="29" cy="37" r="1.4"/><circle cx="26" cy="52" r="1.5"/><circle cx="31" cy="60" r="1.3"/><circle cx="34" cy="69" r="1.2"/><circle cx="67" cy="26" r="1.4"/><circle cx="72" cy="33" r="1.5"/><circle cx="68" cy="43" r="1.3"/><circle cx="73" cy="52" r="1.6"/><circle cx="70" cy="64" r="1.2"/><circle cx="40" cy="20" r="1.2"/><circle cx="55" cy="76" r="1.3"/><circle cx="42" cy="74" r="1.2"/></g><path d="M63 30c-3-8-8-11-15-11-8 0-14 5-14 12 0 16 28 9 28 24 0 7-6 12-14 12-7 0-12-3-15-11" stroke="#93763E" stroke-width="7.5" stroke-linecap="round"/><path d="M63 30c-3-8-8-11-15-11-8 0-14 5-14 12 0 16 28 9 28 24 0 7-6 12-14 12-7 0-12-3-15-11" stroke="#F0E3B8" stroke-width="4.5" stroke-linecap="round"/><circle cx="48" cy="48" r="44" stroke="#E9D9AC" stroke-width="2.4" stroke-dasharray="0.5 6.2" stroke-linecap="round" opacity=".95"/><circle cx="69" cy="62" r="8.5" fill="#FF3B26" opacity=".28"/><circle cx="69" cy="62" r="4" fill="#FF3B26" stroke="#FFE9E0" stroke-width="1.2"/><circle cx="29" cy="23" r="2.1" fill="#F8EBC0"/></svg></span>
       <span><span class="brand-name">Seolint</span><span class="brand-sub">The Daily Strand · $LINT</span></span>
     </a>
-    <span class="live-chip"><i></i>MINT OPEN · PEARL Nº 1 · SEALS IN <b id="chip-countdown">--:--:--</b></span>
+    <span class="live-chip"><i></i><span id="chip-mint">MINT OPEN</span> · PEARL Nº <span id="chip-pearl">1</span> · SEALS IN <b id="chip-countdown">--:--:--</b></span>
     <a class="x-link" href="https://x.com/Seolintfun" target="_blank" rel="noopener noreferrer" aria-label="Seolint on X — @Seolintfun"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.713 6.231 5.851-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z"/></svg>@Seolintfun</a>
     <nav class="main" aria-label="Sections">
-      <a href="#mint">§01 Mint</a><a href="#prompts">Prompts</a><a href="#opening">§02 Claim</a><a href="#specimen">§03 Specimen</a><a href="#archive">§04 Archive</a><a href="#token">§05 Token</a><a href="#survey">§06 Survey</a><a href="#strand">The Strand</a>
+      <a href="#mint">§01 Mint</a><a href="#live-panel">Live</a><a href="#prompts">Prompts</a><a href="#opening">§02 Claim</a><a href="#specimen">§03 Specimen</a><a href="#archive">§04 Archive</a><a href="#token">§05 Token</a><a href="#survey">§06 Survey</a><a href="#strand">The Strand</a>
     </nav>
   </div>
 </header>
@@ -490,19 +503,19 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       <figure class="figplate" style="margin:0">
         <div class="fig-head"><span class="ft">Fig. 1 — The Seolint Globe</span><span class="fs">Every node is one Scan — tap a node</span></div>
         <canvas id="fig1-canvas" width="1080" height="820" aria-label="Fig. 1: today's Pearl drawn as a world globe on a black plate — one large sphere whose continents, the Americas to the left and Africa and Europe to the right, are built from thousands of glowing bone-white micro dots, the oceans left dark. Some forty large lit nodes ride land and sea, joined by a fine dotted net and one thin orbit ring, and one red node off the east coast of South America burns brightest: the Royal focus. Every node and every dot can be tapped or clicked to read its Scan."></canvas>
-        <div class="fig-foot"><span>00:00 UTC — Winding begins</span><span class="gold">Continents in micro dots · one Royal focus off Brazil</span><span>12:00 UTC — Seal</span></div>
+        <div class="fig-foot"><span>12:00 UTC — Winding begins</span><span class="gold">Continents in micro dots · one Royal focus off Brazil</span><span>12:00 UTC — Seal</span></div>
         <div class="fig-readout" id="fig1-readout" aria-live="polite">Tap a lit node — every node is one Scan, with its own fibre, rarity and claim. The red node off Brazil&rsquo;s east coast is today&rsquo;s Royal focus.</div>
       </figure>
       <p class="fig-caption"><b>Fig. 1.</b> Today&rsquo;s Pearl, drawn once and in full — as a <b>globe</b>. One great sphere on black: continents built from <b>thousands of bone-white micro dots</b> packed over the land, the Americas to the left, Africa and Europe to the right, the oceans left dark between them. Over land and sea ride the <b>lit nodes</b> — some forty glowing Scans, joined neighbour to neighbour by a fine <b>dotted net</b> and ringed by a single orbit line. Off Brazil&rsquo;s east coast, one node burns <b>red</b>, brighter than all the rest — the day&rsquo;s Royal focus. About three Scans in a hundred are Royal, fixed by each one&rsquo;s seed the moment it resolves. <b>Every node is one Scan — tap a node</b>, or tap the land itself, to read its fibre, its rarity, and what it claims.</p>
       <div class="ledger" aria-label="Today's Pearl ledger">
         <div><div class="v"><span id="fiber-count">0</span><small> / 1,200</small></div><div class="kk">Threads gathered</div><div class="density-track" aria-hidden="true"><div class="density-fill" id="density-fill" style="width:0%"></div></div></div>
         <div><div class="v" id="density-label" style="font-size:22px;padding-top:5px">Gathering…</div><div class="kk">Density so far</div></div>
-        <div><div class="v">300</div><div class="kk">Free quota / 6 hrs</div></div>
+        <div><div class="v" id="ledger-free">—</div><div class="kk">Free left this phase · live</div></div>
         <div><div class="v">1,200</div><div class="kk">Cap / day</div></div>
         <div><div class="v gold" id="board-countdown">--:--:--</div><div class="kk">Seals in · 12:00 UTC</div></div>
         <div><div class="v">30<small> / 1,000</small></div><div class="kk">Royal Pearl rate</div></div>
       </div>
-      <p class="note" style="margin-top:14px">Plate shown with example threads while Pearl Nº 1 winds — the live count grows with every thread left today. <span class="mono" style="letter-spacing:.08em">STATUS · MINT OPEN ON BNB CHAIN</span> — $LINT, the Pass, the Scan and all three claim contracts are deployed and wired together, the claim pool is funded, and the mint is open: every lane on this page is live.</p>
+      <p class="note" style="margin-top:14px">The ledger under this plate is read <b style="color:var(--bone-dim)">live from the Scan contract</b> — threads gathered, density and the free quota are the chain&rsquo;s own numbers, refreshed every minute by the <a href="#live-panel" style="color:var(--gold-bright)">Live panel</a> in §01. <span class="mono" style="letter-spacing:.08em">STATUS · MINT OPEN ON BNB CHAIN</span> — $LINT, the Pass, the Scan and all three claim contracts are deployed and wired together, the claim pool is funded, and the mint is open: every lane on this page is live.</p>
     </div>
   </div>
 
@@ -518,7 +531,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
         <div class="price-card" aria-label="Thread prices">
           <div class="price-row">
             <span class="price-idx">1.1</span>
-            <div class="what"><div class="tag">Thread 1 · Daily</div><div class="t">First thread — free</div><p>Agent ID + one arithmetic answer. One per wallet per day, drawn from the free quota — 300 per 6-hour phase, refreshed at 00:00 and again at 06:00 UTC while the plate is open.</p><button type="button" class="mini-prompt" data-lane="free">Get the prompt →</button></div>
+            <div class="what"><div class="tag">Thread 1 · Daily</div><div class="t">First thread — free</div><p>Agent ID + one arithmetic answer. One per wallet per day, drawn from the free quota — 300 per 6-hour phase, a fresh 300 every six hours (00:00 · 06:00 · 12:00 · 18:00 UTC). The contract checks your wallet in the Binance Agent ID registry itself when <span class="mono" style="font-size:12.5px">mintFree()</span> is called.</p><button type="button" class="mini-prompt" data-lane="free">Get the prompt →</button></div>
             <span class="amt free">Free</span>
           </div>
           <div class="price-row">
@@ -545,7 +558,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
         <div class="counter-box" id="free-tool">
           <div class="k">Free Thread Check</div>
           <h3>Your first thread, free</h3>
-          <p>Enter your Agent ID and solve the sum — that answer is what resolves your free Scan for the day.</p>
+          <p>Enter your Agent ID and solve the sum — the prompt it issues then has your agent call <span class="mono" style="font-size:13px">mintFree()</span> on-chain, where the contract checks your wallet&rsquo;s Agent ID in the registry itself. The sum is this page&rsquo;s own presence check; nothing but the call goes to the chain.</p>
           <div class="tool-row">
             <input type="text" id="agent-id" placeholder="Binance Agent ID" aria-label="Binance Agent ID" style="flex:1 1 180px"/>
             <span class="quiz-q" id="quiz-q">? + ? =</span>
@@ -571,10 +584,52 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
         </div>
       </div>
       <p class="note" style="margin-top:16px">The numbers line up exactly: a free quota of 300 per 6-hour phase — four phases make <b style="color:var(--bone-dim)">1,200 free threads a day</b> — and the Pearl itself caps at <b style="color:var(--bone-dim)">1,200 threads a day</b>. When the cap is reached, the plate closes for the day.</p>
+      <div class="checker" id="live-panel" style="margin-top:26px;scroll-margin-top:84px">
+        <div class="k">Live Mint &amp; Claim · On-Chain</div>
+        <h3 style="font-family:'Anton',sans-serif;font-weight:400;font-size:27px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 10px;line-height:1.05">The chain, read &amp; written from this page</h3>
+        <p class="note" style="margin:0;max-width:680px">Every number below is read straight from the contracts on BNB Chain — nothing on this panel is an example or a model. Connect a wallet and the buttons send the real calls — <span class="mono" style="font-size:12.5px">mintFree()</span>, <span class="mono" style="font-size:12.5px">mintPaid()</span>, <span class="mono" style="font-size:12.5px">mintWithPass()</span>, <span class="mono" style="font-size:12.5px">Pass.mint(1)</span>, the burn lane and <span class="mono" style="font-size:12.5px">claim()</span> — each one confirmed in your wallet before it is sent.</p>
+        <div class="live-grid" aria-label="Live chain numbers">
+          <div><div class="v gold" id="lv-pearl">—</div><div class="kk">Pearl now winding</div></div>
+          <div><div class="v"><span id="lv-threads">—</span><small> / 1,200</small></div><div class="kk">Threads today</div></div>
+          <div><div class="v" id="lv-agents">—</div><div class="kk">Unique agents today</div></div>
+          <div><div class="v" id="lv-free">—</div><div class="kk">Free left this phase</div></div>
+          <div><div class="v" id="lv-scans">—</div><div class="kk">Scans minted · all time</div></div>
+          <div><div class="v" id="lv-passes">—</div><div class="kk">Passes minted · all time</div></div>
+          <div><div class="v" id="lv-pool">—</div><div class="kk">Claim pool · LINT in 3 contracts</div></div>
+          <div><div class="v gold" id="lv-mint">—</div><div class="kk">Scan mint · Pass mint</div></div>
+        </div>
+        <p class="feedback" id="live-status" aria-live="polite">Reading the chain…</p>
+        <div class="wallet-row">
+          <button class="btn fill" id="wallet-btn" type="button">Connect wallet</button>
+          <span class="waddr" id="wallet-addr">No wallet connected — reads work without one; minting and claiming need your wallet.</span>
+        </div>
+        <div class="live-grid" id="my-grid" style="display:none" aria-label="Your wallet today">
+          <div><div class="v"><span id="my-count">—</span><small> / 10</small></div><div class="kk">Your Scans today</div></div>
+          <div><div class="v" id="my-free">—</div><div class="kk">Your free thread today</div></div>
+          <div><div class="v" id="my-next">—</div><div class="kk">Your next paid price</div></div>
+          <div><div class="v" id="my-agent">—</div><div class="kk">Agent ID in registry</div></div>
+          <div><div class="v" id="my-passbal">—</div><div class="kk">Passes you hold</div></div>
+          <div><div class="v" id="my-lint">—</div><div class="kk">Your $LINT balance</div></div>
+        </div>
+        <div class="tool-row" style="margin-top:18px">
+          <button class="btn fill" id="tx-free" type="button">Mint free · mintFree()</button>
+          <button class="btn" id="tx-paid" type="button">Mint paid · mintPaid()</button>
+          <button class="btn" id="tx-passlane" type="button">Mint with Pass</button>
+          <button class="btn" id="tx-buypass" type="button">Buy a Pass · mint(1)</button>
+          <button class="btn" id="tx-burn" type="button">Burn lane · extra Scan</button>
+        </div>
+        <div class="tool-row" style="margin-top:14px">
+          <input type="number" id="claim-input" placeholder="Scan Nº to claim" aria-label="Scan number to claim" min="1" style="flex:0 1 210px"/>
+          <button class="btn" id="claim-check" type="button">Check claim</button>
+          <button class="btn fill" id="claim-send" type="button" disabled>Claim $LINT</button>
+        </div>
+        <p class="feedback" id="tx-feedback" aria-live="polite"></p>
+        <p class="note" id="claim-result" style="margin:8px 0 0"></p>
+      </div>
       <div class="checker" id="prompts" style="margin-top:26px;scroll-margin-top:84px">
         <div class="k">Prompt Centre · For Agents &amp; Holders</div>
         <h3 style="font-family:'Anton',sans-serif;font-weight:400;font-size:27px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 10px;line-height:1.05">Every lane, one copy-ready prompt</h3>
-        <p class="note" style="margin:0 0 18px;max-width:680px">Seolint is agent-first — but one generic instruction was never enough. Pick a lane, fill in your details, and copy the exact prompt for that job. Every prompt carries the live contract addresses, checks <span class="mono" style="font-size:12.5px">mintOpen()</span> first, and tells your agent to report back instead of guessing. Mint is open — every lane below is live; the prompts still confirm <span class="mono" style="font-size:12.5px">mintOpen()</span> on-chain before acting, and instruct the agent to say so plainly and stop if it ever reads closed.</p>
+        <p class="note" style="margin:0 0 18px;max-width:680px">Seolint is agent-first — but one generic instruction was never enough. Pick a lane, fill in your details, and copy the exact prompt for that job. Every prompt names the real contract calls — <span class="mono" style="font-size:12.5px">mintFree()</span>, <span class="mono" style="font-size:12.5px">mintPaid()</span>, <span class="mono" style="font-size:12.5px">mintWithPass()</span>, <span class="mono" style="font-size:12.5px">preview()</span> / <span class="mono" style="font-size:12.5px">claim()</span>, <span class="mono" style="font-size:12.5px">scanInfo()</span> — with the live addresses, and sends the agent to <a href="https://seolint.xyz/skill.md" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright)">seolint.xyz/skill.md</a>, the machine-readable instruction file, first. Mint is open — every lane below is live; each prompt still has the agent confirm <span class="mono" style="font-size:12.5px">mintOpen()</span> on-chain before acting, and say so plainly and stop if it ever reads closed.</p>
         <div class="lane-row" role="group" aria-label="Choose a prompt lane">
           <button type="button" class="lane-btn" data-lane-btn="free" aria-pressed="true">1 · Free thread</button>
           <button type="button" class="lane-btn" data-lane-btn="paid" aria-pressed="false">2 · Paid threads</button>
@@ -593,9 +648,10 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
           <button class="btn fill" id="prompt-copy" type="button">Copy the prompt</button>
           <button class="btn" id="prompt-download" type="button">Download .txt</button>
           <a class="btn" href="#contracts">Contract addresses ↗</a>
+          <a class="btn" href="https://seolint.xyz/skill.md" target="_blank" rel="noopener noreferrer">skill.md ↗</a>
         </div>
         <p class="feedback" id="prompt-feedback" aria-live="polite"></p>
-        <p class="note" style="margin:12px 0 0">No wallet connection is needed on this page — the prompt is the interface. Paste it to your agent (or follow it by hand in your wallet): the agent reads the chain, resolves, and claims for you.</p>
+        <p class="note" style="margin:12px 0 0">Prefer to act yourself? The <a href="#live-panel" style="color:var(--gold-bright)">Live Mint &amp; Claim panel</a> above sends these same calls from your own wallet. The prompts remain the agent interface — paste one to your agent (or follow it by hand): the agent reads the chain, resolves, and claims for you.</p>
       </div>
     </section>
 
@@ -640,16 +696,16 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       </div>
 
       <div class="timeline" id="timeline">
-        <div class="tl-step" data-phase="A"><div class="ph">Phase A</div><div class="tt">00:00 UTC — The plate opens</div><div class="tl">A new Pearl begins to wind. Threads open.</div></div>
-        <div class="tl-step" data-phase="B"><div class="ph">Phase B</div><div class="tt">06:00 UTC — Half wound</div><div class="tl">The Pearl is filling. A fresh free quota of 300 opens for the second half of the winding.</div></div>
-        <div class="tl-step" data-phase="C"><div class="ph">Phase C</div><div class="tt">12:00 UTC — The plate seals</div><div class="tl">Sealed and counted for density. No more threads today.</div></div>
-        <div class="tl-step" data-phase="D"><div class="ph">Phase D</div><div class="tt">18:00 UTC — The opening</div><div class="tl">Every thread in the sealed Pearl can claim.</div></div>
+        <div class="tl-step" data-phase="A"><div class="ph">Phase A</div><div class="tt">12:00 UTC — A new Pearl begins</div><div class="tl">The day turns at noon UTC: a fresh Pearl starts to wind and threads open.</div></div>
+        <div class="tl-step" data-phase="B"><div class="ph">Phase B</div><div class="tt">18:00 UTC — The opening</div><div class="tl">The Pearl that sealed at noon opens — its threads can claim. The new Pearl keeps winding, and a fresh free quota of 300 runs.</div></div>
+        <div class="tl-step" data-phase="C"><div class="ph">Phase C</div><div class="tt">00:00 UTC — Half wound</div><div class="tl">The Pearl is filling. Another fresh free quota of 300 opens at midnight.</div></div>
+        <div class="tl-step" data-phase="D"><div class="ph">Phase D</div><div class="tt">06:00 UTC — The last quarter</div><div class="tl">The final free quota of the day runs. At 12:00 UTC the plate seals — sealed and counted for density, no more threads today.</div></div>
       </div>
       <p class="note mono" style="font-size:13px;margin-top:16px">Right now the day is in phase · <b id="phase-now" style="color:var(--gold-bright)">—</b> · a sealed Pearl matures one phase (6 hours) after it seals.</p>
 
       <div class="checker" id="checker">
-        <div class="k">Pearl Checker · Preview</div>
-        <p class="note" style="margin:0 0 16px;max-width:640px">Every Scan leaves its thread in exactly one Pearl, wound in its own pattern. Enter a Scan number, and Seolint redraws that Pearl from its seed — the winding, the thread kind, and what the thread claims.</p>
+        <div class="k">Pearl Checker · Live on-chain</div>
+        <p class="note" style="margin:0 0 16px;max-width:640px">Every Scan leaves its thread in exactly one Pearl. Enter a Scan number and this checker reads the Scan contract itself — <span class="mono" style="font-size:12.5px">scanInfo()</span>, its owner, its day&rsquo;s density and its live claim preview: the kind, the Royal flag, and exactly what the thread claims. The Pearl is redrawn in the day&rsquo;s own dot-globe language.</p>
         <div class="tool-row">
           <input type="number" id="check-input" placeholder="Scan number — try 7" aria-label="Scan number" min="1" style="flex:0 1 230px"/>
           <button class="btn fill" id="check-btn" type="button">Find the Pearl</button>
@@ -818,7 +874,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       </div>
 
       <div class="contracts" id="contracts">
-        <div class="np-head"><span class="t">Contracts — live on BNB Chain</span><span class="r">Verified on-chain · 20 Nov</span></div>
+        <div class="np-head"><span class="t">Contracts — live on BNB Chain</span><span class="r">Sources verified · Sourcify exact match</span></div>
         <div class="contract-grid">
           <div>
             <h3 class="tok-h">The six addresses</h3>
@@ -838,6 +894,8 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
               <li><span class="st done">Done</span><span><b>All contracts wired</b> — token, Pass and claims connected to the Scan.</span></li>
               <li><span class="st done">Done</span><span><b>Claim pool funded</b> — 2,000,000,000 LINT in each claim contract, verified on-chain; the owner wallet holds the remaining 4,000,000,000.</span></li>
               <li><span class="st done">Done</span><span><b>Mint open</b> — the Pass mint is open, the Scan&rsquo;s base URI is set and the Scan mint is open; Pearl Nº 1 is winding toward the next 12:00 UTC seal.</span></li>
+              <li><span class="st done">Done</span><span><b>Sources verified open</b> — all six contracts are exact-match verified on Sourcify; anyone can read the exact code that runs on-chain.</span></li>
+              <li><span class="st done">Done</span><span><b>This page is wired to the chain</b> — the <a href="#live-panel" style="color:var(--gold-bright)">Live panel</a> reads the contracts directly and sends real mint &amp; claim transactions from your wallet; the Pearl Checker and Royal Check read <span class="mono" style="font-size:12.5px">scanInfo()</span> live.</span></li>
             </ul>
             <p class="note" style="margin-top:16px">The pool is funded, so the first Pearl&rsquo;s claims are payable from the moment it seals — and with the mint open, every lane on this page is live.</p>
           </div>
@@ -854,12 +912,12 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       </div>
       <div class="survey-grid">
         <div class="survey-card">
-          <div class="k">Survey Nº 1 · Preview model</div>
+          <div class="k">Survey Nº 1 · Opens at the first opening</div>
           <p class="survey-q">Where should tomorrow&rsquo;s Royal focus burn?</p>
           <div id="survey-opts">
-            <button type="button" class="survey-opt" data-opt="0" aria-pressed="false"><span class="bar"></span><span class="lab"><span class="t">Hold the coast<small>Keep the red focus off Brazil&rsquo;s east coast, where it burns today.</small></span><span class="n" data-votes>4 voices</span></span></button>
-            <button type="button" class="survey-opt" data-opt="1" aria-pressed="false"><span class="bar"></span><span class="lab"><span class="t">Cross the Atlantic<small>Move the focus to the mid-Atlantic crossing, on the net&rsquo;s busiest line.</small></span><span class="n" data-votes>3 voices</span></span></button>
-            <button type="button" class="survey-opt" data-opt="2" aria-pressed="false"><span class="bar"></span><span class="lab"><span class="t">Follow the Strand<small>The focus rides to the oldest unclaimed Pearl on the Strand.</small></span><span class="n" data-votes>2 voices</span></span></button>
+            <button type="button" class="survey-opt" data-opt="0" aria-pressed="false"><span class="bar"></span><span class="lab"><span class="t">Hold the coast<small>Keep the red focus off Brazil&rsquo;s east coast, where it burns today.</small></span><span class="n" data-votes>0 voices</span></span></button>
+            <button type="button" class="survey-opt" data-opt="1" aria-pressed="false"><span class="bar"></span><span class="lab"><span class="t">Cross the Atlantic<small>Move the focus to the mid-Atlantic crossing, on the net&rsquo;s busiest line.</small></span><span class="n" data-votes>0 voices</span></span></button>
+            <button type="button" class="survey-opt" data-opt="2" aria-pressed="false"><span class="bar"></span><span class="lab"><span class="t">Follow the Strand<small>The focus rides to the oldest unclaimed Pearl on the Strand.</small></span><span class="n" data-votes>0 voices</span></span></button>
           </div>
           <p class="feedback" id="survey-feedback" aria-live="polite">Check a Scan on the right first — the survey opens only for a Royal holder.</p>
           <div class="survey-meta">
@@ -869,9 +927,9 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
           </div>
         </div>
         <div class="survey-card" id="survey-check">
-          <div class="k">Royal Check · Preview</div>
+          <div class="k">Royal Check · Live on-chain</div>
           <h3>Is your Scan Royal?</h3>
-          <p>Enter a Scan number — its seed decides, by the same rule as the Pearl Checker: a seed ending at 970 or above in the last thousand is Royal, and only a Royal Scan unlocks a voice in the survey on the left. Try Nº 3 — the red focus itself.</p>
+          <p>Enter a Scan number — this check reads <span class="mono" style="font-size:13px">scanInfo()</span> on the Scan contract itself: the Royal flag was fixed by the Scan&rsquo;s seed the moment it resolved (seed % 1000 ≥ 970, about 3 in 100), and only a Royal Scan unlocks a voice in the survey on the left.</p>
           <div class="tool-row">
             <input type="number" id="survey-input" placeholder="Scan number — try 3" aria-label="Scan number for the Royal check" min="1" style="flex:0 1 200px"/>
             <button class="btn fill" id="survey-btn" type="button">Check the seed</button>
@@ -883,7 +941,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
             <div class="row"><span class="k">What it sets</span><span class="v gold">Tomorrow&rsquo;s Royal focus</span></div>
             <div class="row"><span class="k">Result</span><span class="v">Read at the opening, with the claims</span></div>
           </div>
-          <p class="note" style="margin-top:14px">Preview model with example voices — the live survey is running now that mint is open, counted from Royal Nodes actually held. Nothing here is stored; a voice cast in this model lasts only while the page is open.</p>
+          <p class="note" style="margin-top:14px">Eligibility is read live from the chain — the check above asks the Scan contract, not a simulation. The survey itself opens at the first Pearl opening (18:00 UTC after the first seal); voices signalled here are counted in the open against Royal Scans actually held on-chain, and a voice cast on this page lasts only while the page is open.</p>
         </div>
       </div>
     </section>
@@ -1361,7 +1419,7 @@ tickCountdown(); setInterval(tickCountdown,1000);
     if(isNaN(ans)){fb.textContent="Type your answer to the question.";fb.className="feedback bad";return;}
     if(ans===a+b){fb.textContent="✓ Correct — your free-resolve prompt is ready below. Copy it and hand it to your agent.";fb.className="feedback ok";
       var box=document.getElementById("free-prompt-box"),fp=document.getElementById("free-prompt");
-      if(box&&fp){ fp.textContent="You are my agent for Seolint on BNB Chain (chainId 56). Contracts — Scan (SCAN): 0xb4139ecb4f897e891f768d2ab3b5c3a380ecdcd3 · $LINT: 0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f · Pass (SPASS): 0xd0627633102ea1f47874229fbfd4a9cee20b360e. My Binance Agent ID is "+id+". Mint is open — confirm Scan.mintOpen() reads true first, and stop and tell me plainly if it reads closed instead of retrying blindly. Then resolve ONE free Scan into today's Pearl using my Agent ID and this arithmetic answer: "+a+" + "+b+" = "+(a+b)+" (if the contract shows a fresh question instead, solve that one). The plate seals at 12:00 UTC; max 10 Scans per wallet per day. Report back the Scan tokenId, its kind (Cotton / Wool / Silk) and whether it is Royal. When the Pearl opens at 18:00 UTC (seal + 6 hours), claim its $LINT for me — Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000; claim fee 0.000277 BNB (Royal 0.000555 BNB). Claims never expire.";
+      if(box&&fp){ fp.textContent="You are my agent for Seolint on BNB Chain (chainId 56). Read https://seolint.xyz/skill.md first — the machine-readable instruction file, with these same addresses and calls. Contracts — Scan (SCAN): 0xb4139ecb4f897e891f768d2ab3b5c3a380ecdcd3 · $LINT: 0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f · Pass (SPASS): 0xd0627633102ea1f47874229fbfd4a9cee20b360e. My Binance Agent ID is "+id+", registered to my wallet. Mint is open — confirm Scan.mintOpen() reads true first, and stop and tell me plainly if it reads closed instead of retrying blindly. Then resolve ONE free Scan into today's Pearl by calling Scan.mintFree() — no arguments, no BNB: the contract checks my wallet in the Binance Agent ID registry itself (Scan.hasAgentId), one free Scan per wallet per day, and the free quota is 300 per 6-hour phase (check Scan.freeRemainingInPhase()). The day seals at 12:00 UTC; max 10 Scans per wallet per day. Report back the Scan tokenId and read Scan.scanInfo(tokenId) for its kind (0 Cotton / 1 Wool / 2 Silk) and whether it is Royal. When the Pearl opens (seal + 6 hours, from 18:00 UTC), claim its $LINT for me via a claim contract's claim(tokenId) with the fee from its preview(tokenId) — Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000; fee 0.000277 BNB (Royal 0.000555 BNB). Claims never expire.";
         box.classList.add("show"); }
     }
     else{fb.textContent="✗ Not quite — check the sum and try again.";fb.className="feedback bad";}
@@ -1441,7 +1499,7 @@ function drawCut(cv,n,opts){
   ctx.beginPath(); ctx.arc(coreCx,coreCy,coreR,0,Math.PI*2); ctx.strokeStyle=info.gold?"rgba(255,59,38,.85)":"rgba(244,235,212,.4)"; ctx.lineWidth=Math.max(1,baseW*0.8); ctx.stroke();
   if(opts.title){
     ctx.fillStyle="rgba(180,163,126,.9)"; ctx.font="600 "+Math.max(12,W/44)+"px 'IBM Plex Mono', monospace"; ctx.textAlign="left";
-    ctx.fillText("PEARL · SCAN Nº "+n, 18, 30);
+    ctx.fillText("PEARL STUDY · Nº "+n, 18, 30);
     if(info.gold){ ctx.fillStyle="#FF3B26"; ctx.textAlign="right"; ctx.fillText("ROYAL PEARL", W-18, 30); ctx.textAlign="left"; }
   }
   if(opts.labels){
@@ -1470,7 +1528,7 @@ var SCANS=[7,42,128,512];
   function select(n,btn){
     currentN=n;
     var info=drawCut(main,n,{title:true,labels:main.clientWidth>=470});
-    nameEl.textContent="PEARL CUT · SCAN Nº "+n;
+    nameEl.textContent="PEARL CUT · STUDY Nº "+n;
     flagEl.textContent=info.gold?"ROYAL PEARL":"";
     kEl.textContent=info.kind.charAt(0)+info.kind.slice(1).toLowerCase()+" Node";
     lEl.textContent=info.wind+" · "+info.turns+" turns at the core";
@@ -1497,15 +1555,38 @@ var SCANS=[7,42,128,512];
   var cfb=document.getElementById("check-feedback");
   btn.addEventListener("click",function(){
     var n=parseInt(input.value,10);
-    if(isNaN(n)||n<1){res.classList.remove("show");if(cfb){cfb.textContent="Enter a Scan number first — a whole number from 1 up. Try 7.";cfb.className="feedback bad";}input.focus();return;}
-    if(cfb){cfb.textContent="";cfb.className="feedback";}
-    var info=scanInfo(n);
-    if(checkBall)checkBall.dispose();
-    checkBall=createDotBall(cv,info.seed,{cx:cv.width/2,cy:214,r:198,tier:info.gold?"royal":"standard"});
-    var html="<span class='big'>Pearl of Scan Nº "+n+"</span><br/>Node · <b>"+info.kind+"</b> · "+info.wind.toLowerCase()+" · "+info.turns+" turns<br/>Royal Pearl · "+(info.gold?"<span class='gold'>YES</span>":"none")+"<br/>";
-    if(info.gold){html+="Claims · <span class='gold'>250,000 LINT</span> at any density · fee 0.000555 BNB";}
-    else{html+="Claims by density · Matte <b>2,500</b> · Satin <b>12,500</b> · Lustrous <b>60,000</b> LINT · fee 0.000277 BNB";}
-    meta.innerHTML=html; res.classList.add("show");
+    if(isNaN(n)||n<1){res.classList.remove("show");if(cfb){cfb.textContent="Enter a Scan number first — a whole number from 1 up.";cfb.className="feedback bad";}input.focus();return;}
+    var SL=window.__sl;
+    if(!SL||!SL.ready){if(cfb){cfb.textContent="The live chain connection is still loading — give it a moment and try again.";cfb.className="feedback bad";}return;}
+    if(cfb){cfb.textContent="Reading Scan Nº "+n+" from the chain…";cfb.className="feedback";}
+    SL.scanInfo(n).then(function(info){
+      if(!info){
+        return SL.totalMinted().then(function(tm){
+          res.classList.remove("show");
+          if(cfb){cfb.textContent="Scan Nº "+n+" does not exist yet — "+tm+" Scan"+(tm===1?"":"s")+" minted so far. The chain has no such token.";cfb.className="feedback bad";}
+        });
+      }
+      return Promise.all([SL.ownerOf(n),SL.claimPreview(n),SL.claimOpensAt(info.dayId)]).then(function(r){
+        var owner=r[0], pv=r[1], opensAt=r[2];
+        if(cfb){cfb.textContent="";cfb.className="feedback";}
+        if(checkBall)checkBall.dispose();
+        checkBall=createDotBall(cv,hashNum(n),{cx:cv.width/2,cy:214,r:198,tier:info.royal?"royal":"standard"});
+        var kindName=KINDS[info.kind]||"—";
+        var html="<span class='big'>Pearl Nº "+SL.pearlNo(info.dayId)+" · Scan Nº "+n+"</span><br/>"+
+          "Thread <b>"+info.dayIndex+"</b> of its day · Node · <b>"+kindName+"</b><br/>"+
+          "Royal Pearl · "+(info.royal?"<span class='gold'>YES</span>":"none")+"<br/>"+
+          "Held by · <b>"+(owner?owner.slice(0,6)+"…"+owner.slice(-4):"—")+"</b><br/>";
+        if(info.claimed){ html+="Claim · <span class='gold'>already taken</span> — the $LINT for this Scan has been claimed."; }
+        else if(pv){
+          html+="Claims · <span class='gold'>"+pv.amount.toLocaleString("en-US")+" LINT</span> · fee "+pv.fee+" BNB<br/>";
+          html+=pv.open?"Claim window · <span class='gold'>OPEN NOW</span> — claim it in the Live panel (§01) or with the claim prompt.":
+            "Claim window · opens <b>"+new Date(opensAt*1000).toUTCString().replace(" GMT"," UTC")+"</b> (seal + 6 hours) · never expires";
+        }
+        meta.innerHTML=html; res.classList.add("show");
+      });
+    }).catch(function(){
+      if(cfb){cfb.textContent="The chain read failed — check your connection and try again.";cfb.className="feedback bad";}
+    });
   });
 })();
 
@@ -1594,8 +1675,9 @@ function hashNum(n){var h=(n*2654435761)>>>0;h^=h>>>13;h=Math.imul(h,0x5BD1E995)
   var readout=document.getElementById("fig1-readout");
   var KINDS=["COTTON","WOOL","SILK"];
   function infoFor(n){ var h=hashNum(n); return {kind:KINDS[h%3], gold:h%1000>=970}; }
-  var TARGET=148;
-  var TIER=TARGET<25?{name:"MATTE",amt:"2,500"}:TARGET<=100?{name:"SATIN",amt:"12,500"}:{name:"LUSTROUS",amt:"60,000"};
+  var TARGET=0, PARTICIPANTS=0;
+  var TIER={name:"MATTE",amt:"2,500"};
+  function tierFor(p){ return p<25?{name:"MATTE",amt:"2,500"}:p<=100?{name:"SATIN",amt:"12,500"}:{name:"LUSTROUS",amt:"60,000"}; }
   var countEl=document.getElementById("fiber-count"), fillEl=document.getElementById("density-fill"), densEl=document.getElementById("density-label");
 
   /* soft glow sprites — one radial dot per colour, stamped once per point */
@@ -1817,8 +1899,13 @@ function hashNum(n){var h=(n*2654435761)>>>0;h^=h>>>13;h=Math.imul(h,0x5BD1E995)
     var c=Math.round(TARGET*p);
     if(countEl)countEl.textContent=c;
     if(fillEl)fillEl.style.width=(c/1200*100)+"%";
-    if(densEl)densEl.textContent=c<25?"Matte forming":c<=100?"Satin forming":"Lustrous forming";
+    if(densEl)densEl.textContent=tierFor(PARTICIPANTS).name.charAt(0)+tierFor(PARTICIPANTS).name.slice(1).toLowerCase()+" forming";
   }
+  /* the live panel feeds the chain's own counts into this plate:
+     threads = mintedInDay(today), participants = dayParticipants(today) */
+  window.__fig1SetToday=function(threads,participants){
+    TARGET=threads; PARTICIPANTS=participants; TIER=tierFor(participants); ledger(1);
+  };
   function drawFrame(p,rotDeg,ts){
     curP=p;
     /* the centre longitude drifts steadily westward — the sphere turns
@@ -2156,8 +2243,8 @@ function hashNum(n){var h=(n*2654435761)>>>0;h^=h>>>13;h=Math.imul(h,0x5BD1E995)
    small continent beads. Each bead is a Scan, read in the same voice as
    Fig. 1's readout, with its kind and royalty taken from the same seed
    rule the rest of the page uses, so a Scan reads identically wherever
-   it is found. Today's tier follows the ledger: 148 threads gathered,
-   so the day is forming Lustrous at 60,000 LINT. */
+   it is found. Today's tier is read live from the chain by the Live
+   panel (window.__slTier, set from dayParticipants). */
 function hashNum(n){var h=(n*2654435761)>>>0;h^=h>>>13;h=Math.imul(h,0x5BD1E995);h^=h>>>15;return h>>>0;}
 var KINDS=["COTTON","WOOL","SILK"];
 var readout=document.getElementById("photo-readout");
@@ -2171,7 +2258,7 @@ function readScan(scan,kind,place,royal,focus){
   if(!readout)return;
   if(focus) readout.innerHTML="SCAN Nº "+scan+" — "+kind+" — "+place+" — <span class='royal'>ROYAL · THE RED FOCUS</span> — CLAIM 250,000 LINT · PAYS AT ANY DENSITY";
   else if(royal) readout.innerHTML="SCAN Nº "+scan+" — "+kind+" — "+place+" — <span class='royal'>ROYAL BEAD</span> — CLAIM 250,000 LINT · PAYS AT ANY DENSITY";
-  else readout.innerHTML="SCAN Nº "+scan+" — "+kind+" — "+place+" — STANDARD — CLAIM 60,000 LINT · LUSTROUS — TODAY'S TIER";
+  else readout.innerHTML="SCAN Nº "+scan+" — "+kind+" — "+place+" — STANDARD — CLAIM "+((window.__slTier||{}).amt||"2,500")+" LINT · "+((window.__slTier||{}).name||"MATTE")+" — TODAY'S TIER, READ LIVE";
 }
 spots.forEach(function(btn){
   btn.setAttribute("aria-pressed","false");
@@ -2185,7 +2272,8 @@ spots.forEach(function(btn){
    the photograph: North and South America, Europe, Africa, the rims.
    Positions are fixed to the photograph, so a bead always sits on the
    land it names. Scan numbers are dealt in a fixed order, skipping the
-   ten numbers the large nodes already carry. */
+   ten numbers the large nodes already carry. The claim line follows
+   today's tier as read live from the chain (window.__slTier). */
 var BEADS=[
  [18,30,"NORTH AMERICA"],[21,33,"NORTH AMERICA"],[24,29,"NORTH AMERICA"],[26,35,"NORTH AMERICA"],[20,38,"NORTH AMERICA"],[28,38,"NORTH AMERICA"],[16,36,"NORTH AMERICA"],[23,42,"NORTH AMERICA"],[30,33,"NORTH AMERICA"],[19,26,"NORTH AMERICA"],
  [33,21,"THE FAR NORTH"],[36,25,"THE FAR NORTH"],
@@ -2231,16 +2319,16 @@ if(toggle&&stage){
 <script>
 (function(){
 "use strict";
-/* §06 — the Royal Survey. Eligibility follows the page's one seed rule:
-   a Scan is Royal when its hash ends at 970+ in the last thousand —
-   the same test the Pearl Checker and Fig. 1 use, so Scan Nº 3, the
-   red focus, passes here exactly as it does everywhere else. A voice
-   cast in this preview model lives only in this page session. */
+/* §06 — the Royal Survey. Eligibility is read LIVE from the chain:
+   window.__sl.scanInfo(n) asks the Scan contract for the Royal flag
+   it fixed at resolve — the same record the Pearl Checker reads.
+   A voice cast on this page lives only in this page session; the
+   binding count is Royal Scans held on-chain at the opening. */
 function hashNum(n){var h=(n*2654435761)>>>0;h^=h>>>13;h=Math.imul(h,0x5BD1E995);h^=h>>>15;return h>>>0;}
 var input=document.getElementById("survey-input"), btn=document.getElementById("survey-btn");
 var checkFb=document.getElementById("survey-check-feedback"), surveyFb=document.getElementById("survey-feedback");
 var opts=Array.prototype.slice.call(document.querySelectorAll("#survey-opts .survey-opt"));
-var votes=[4,3,2], unlocked=false, myVote=-1;
+var votes=[0,0,0], unlocked=false, myVote=-1;
 function paint(){
   var total=votes.reduce(function(a,b){return a+b;},0);
   opts.forEach(function(o,i){
@@ -2263,20 +2351,34 @@ opts.forEach(function(o,i){
 function check(){
   var n=parseInt(input.value,10);
   if(isNaN(n)||n<1){ checkFb.textContent="Enter a Scan number first."; checkFb.className="feedback bad"; return; }
-  var royal=hashNum(n)%1000>=970;
-  if(royal){
-    unlocked=true; paint();
-    checkFb.textContent="✓ Scan Nº "+n+" is Royal — the survey is open to you. Cast your voice on the left.";
-    checkFb.className="feedback ok";
-    surveyFb.textContent="Survey open — one voice, holder of Scan Nº "+n+". Choose where tomorrow's focus burns.";
-    surveyFb.className="feedback ok";
-  } else {
-    unlocked=false; myVote=-1; paint();
-    checkFb.textContent="Scan Nº "+n+" is a standard Node — no voice in the Royal Survey. Royal is about 3 in 100, fixed by the seed.";
-    checkFb.className="feedback bad";
-    surveyFb.textContent="Check a Scan on the right first — the survey opens only for a Royal holder.";
-    surveyFb.className="feedback";
-  }
+  var SL=window.__sl;
+  if(!SL||!SL.ready){ checkFb.textContent="The live chain connection is still loading — give it a moment and try again."; checkFb.className="feedback bad"; return; }
+  checkFb.textContent="Reading Scan Nº "+n+" from the chain…"; checkFb.className="feedback";
+  SL.scanInfo(n).then(function(info){
+    if(!info){
+      unlocked=false; myVote=-1; paint();
+      checkFb.textContent="Scan Nº "+n+" does not exist on-chain yet — no Royal flag to read. Mint it first, in the Live panel (§01).";
+      checkFb.className="feedback bad";
+      surveyFb.textContent="Check a Scan on the right first — the survey opens only for a Royal holder.";
+      surveyFb.className="feedback";
+      return;
+    }
+    if(info.royal){
+      unlocked=true; paint();
+      checkFb.textContent="✓ Scan Nº "+n+" is Royal — read live from the Scan contract. The survey is open to you: cast your voice on the left.";
+      checkFb.className="feedback ok";
+      surveyFb.textContent="Survey open — one voice, holder of Scan Nº "+n+". Choose where tomorrow's focus burns.";
+      surveyFb.className="feedback ok";
+    } else {
+      unlocked=false; myVote=-1; paint();
+      checkFb.textContent="Scan Nº "+n+" is a standard Node on-chain — no voice in the Royal Survey. Royal is about 3 in 100, fixed by the seed at resolve.";
+      checkFb.className="feedback bad";
+      surveyFb.textContent="Check a Scan on the right first — the survey opens only for a Royal holder.";
+      surveyFb.className="feedback";
+    }
+  }).catch(function(){
+    checkFb.textContent="The chain read failed — check your connection and try again."; checkFb.className="feedback bad";
+  });
 }
 if(btn)btn.addEventListener("click",check);
 if(input)input.addEventListener("keydown",function(ev){ if(ev.key==="Enter"){ ev.preventDefault(); check(); } });
@@ -2320,6 +2422,7 @@ var ADDR={
   claim3:"0xb6d32881e7d519636262d702652055fb12d4c87f"
 };
 var CONTRACTS="Contracts (BNB Chain, chainId 56) — Scan (SCAN): "+ADDR.scan+" · $LINT: "+ADDR.lint+" · Pass (SPASS): "+ADDR.pass+" · Claim Nº 1: "+ADDR.claim1+" · Claim Nº 2: "+ADDR.claim2+" · Claim Nº 3: "+ADDR.claim3+".";
+var SKILL="Read https://seolint.xyz/skill.md first — Seolint's machine-readable instruction file, with these same addresses and the exact calls below.";
 var OPEN_CHECK="Mint is open — confirm it first by reading Scan.mintOpen() and Pass.mintOpen() as relevant; if either reads closed, stop and tell me plainly instead of retrying blindly.";
 function copyText(s,fb){
   function done(ok){ if(fb){ fb.textContent=ok?"✓ Copied — paste it to your agent.":"Select the prompt text and copy it by hand."; fb.className="feedback "+(ok?"ok":"bad"); } }
@@ -2338,12 +2441,12 @@ function downloadText(s,name){
 }
 function buildPrompt(lane,d){
   var agent=d.agent||"[my Binance Agent ID]", wallet=d.wallet||"[my wallet]", scan=d.scan||"[my Scan number]";
-  if(lane==="free") return "You are my agent for Seolint on BNB Chain. "+CONTRACTS+" My Binance Agent ID is "+agent+". "+OPEN_CHECK+" Then resolve ONE free Scan into today's Pearl with my Agent ID: request the day's arithmetic question, solve it, and submit the answer — the first Scan of the day is free (free quota 300 per 6-hour phase; plate seals 12:00 UTC; max 10 Scans per wallet per day). Report back the Scan tokenId, its kind (Cotton / Wool / Silk) and whether it is Royal. When the Pearl opens at 18:00 UTC (seal + 6 hours), claim its $LINT for me — Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000; claim fee 0.000277 BNB (Royal 0.000555 BNB). Claims never expire.";
-  if(lane==="paid") return "You are my agent for Seolint on BNB Chain. "+CONTRACTS+" My wallet is "+wallet+". "+OPEN_CHECK+" Then resolve paid Scans into today's Pearl for my wallet, up to the daily maximum of 10 in total (counting any free one already resolved today): Scans 2–5 cost exactly 0.0002 BNB each, Scans 6–10 cost exactly 0.0004 BNB each — never pay more than the price for the next count, and stop if the day's 1,200 cap is reached. The plate seals at 12:00 UTC. After each resolve, report the tokenId, its kind (Cotton / Wool / Silk) and whether it is Royal. When the Pearl opens at 18:00 UTC, claim the $LINT for every Scan I hold in it (Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000 per Node). Claims never expire.";
-  if(lane==="pass") return "You are my agent for Seolint on BNB Chain. "+CONTRACTS+" My wallet is "+wallet+" and it has NO Binance Agent ID — use the Pass lane. "+OPEN_CHECK+" Steps: (1) If my wallet holds no Seolint Pass (SPASS), mint one Pass for exactly 0.00123 BNB — the Pass is a transferable NFT, supply unlimited, and it never expires. (2) Using the Pass, resolve one Scan into today's Pearl for my wallet — no Agent ID and no arithmetic question on this lane. The plate seals at 12:00 UTC. Report the Pass tokenId and the Scan tokenId, the Scan's kind (Cotton / Wool / Silk) and whether it is Royal. When the Pearl opens at 18:00 UTC, claim its $LINT (Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000). Claims never expire.";
-  if(lane==="claim") return "You are my agent for Seolint on BNB Chain. "+CONTRACTS+" My wallet is "+wallet+". Claim the $LINT for my Scan Nº "+scan+" (and any other Seolint Scans my wallet holds in already-opened Pearls). How: find which of the three claim contracts holds that Scan's day, wait until that Pearl is open (sealed 12:00 UTC + 6 hours = from 18:00 UTC), then call its claim with the Scan tokenId — fee 0.000277 BNB per Node, 0.000555 BNB for a Royal Node. Amounts: Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000 LINT per Node. The Node is kept, never burned, and claims never expire — if a Pearl is not open yet, tell me the exact opening time instead of failing. Report each claim's transaction hash and the LINT received.";
-  if(lane==="burn") return "You are my agent for Seolint on BNB Chain. "+CONTRACTS+" My wallet is "+wallet+". Use the burn lane: burn exactly 50,000 $LINT from my wallet via the Scan contract to resolve ONE extra Scan into today's Pearl, beyond my daily ten — first confirm my LINT balance covers the burn and that the day's 1,200 cap has not been reached, and confirm the burn amount with me before sending. The plate seals at 12:00 UTC. Report the burn transaction, the new Scan tokenId, its kind (Cotton / Wool / Silk) and whether it is Royal. When the Pearl opens at 18:00 UTC, claim its $LINT (Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000). Claims never expire.";
-  return "You are my agent for Seolint on BNB Chain. "+CONTRACTS+" Read the state of Scan Nº "+scan+" for wallet "+wallet+" and report, in plain words: (1) whether the Scan exists and who holds it; (2) its kind (Cotton / Wool / Silk) and whether it is Royal — Royal is fixed by its seed (seed % 1000 ≥ 970); (3) which day's Pearl it sits in, whether that Pearl has sealed (12:00 UTC) and opened (seal + 6 hours); (4) how much $LINT it claims (Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000) and whether that claim has already been taken. Read-only — do not send any transaction for this check.";
+  if(lane==="free") return "You are my agent for Seolint on BNB Chain. "+SKILL+" "+CONTRACTS+" My Binance Agent ID is "+agent+", registered to my wallet. "+OPEN_CHECK+" Then resolve ONE free Scan into today's Pearl by calling Scan.mintFree() — no arguments, no BNB. The contract checks my wallet in the Binance Agent ID registry itself: before sending, read Scan.hasAgentId(my wallet) = true, Scan.freeUsedInDay(Scan.currentDay(), my wallet) = false, and Scan.freeRemainingInPhase() > 0 (the free quota is 300 per 6-hour phase); if any check fails, tell me which one instead of sending. The day seals at 12:00 UTC; max 10 Scans per wallet per day. Report back the Scan tokenId, and read Scan.scanInfo(tokenId) for its kind (0 Cotton / 1 Wool / 2 Silk) and whether it is Royal. When the Pearl opens (seal + 6 hours, from 18:00 UTC), claim its $LINT for me — the claim lane of the Prompt Centre on seolint.xyz has the exact steps. Claims never expire.";
+  if(lane==="paid") return "You are my agent for Seolint on BNB Chain. "+SKILL+" "+CONTRACTS+" My wallet is "+wallet+". "+OPEN_CHECK+" Then resolve paid Scans into today's Pearl by calling Scan.mintPaid(), up to the daily maximum of 10 in total — the count includes any free, Pass or burn Scan today: read Scan.walletDayCount(Scan.currentDay(), my wallet). Before each call, read Scan.nextPaidPrice(my wallet) and send exactly that value — 0.0002 BNB while my day count is below 5, 0.0004 BNB for counts 6–10; a price of 0 means I am at the daily max, so stop. Never pay more than nextPaidPrice, and stop if the day's 1,200 cap (Scan.mintedInDay(Scan.currentDay())) is reached. The day seals at 12:00 UTC. After each resolve, report the tokenId and its Scan.scanInfo (kind 0 Cotton / 1 Wool / 2 Silk, Royal flag). When the Pearl opens (seal + 6 hours), claim the $LINT for every Scan I hold in it — the claim lane of the Prompt Centre on seolint.xyz has the exact steps. Claims never expire.";
+  if(lane==="pass") return "You are my agent for Seolint on BNB Chain. "+SKILL+" "+CONTRACTS+" My wallet is "+wallet+" and it has NO Binance Agent ID — use the Pass lane. "+OPEN_CHECK+" Steps: (1) If Pass.balanceOf(my wallet) = 0, mint one Pass by calling Pass.mint(1) with exactly Pass.PRICE() = 0.00123 BNB — the Pass is a transferable NFT, supply unlimited, it never expires, and it is NOT consumed by use. (2) Call Scan.mintWithPass() — no BNB, no Agent ID, no question; this lane resolves one Scan per wallet per day, so first check Scan.passUsedInDay(Scan.currentDay(), my wallet) = false. The day seals at 12:00 UTC. Report the Pass tokenId and the Scan tokenId, and read Scan.scanInfo for the Scan's kind and Royal flag. When the Pearl opens (seal + 6 hours), claim its $LINT — the claim lane of the Prompt Centre on seolint.xyz has the exact steps. Claims never expire.";
+  if(lane==="claim") return "You are my agent for Seolint on BNB Chain. "+SKILL+" "+CONTRACTS+" My wallet is "+wallet+". Claim the $LINT for my Scan Nº "+scan+" (and any other Seolint Scans my wallet holds in already-opened Pearls). How: the three claim contracts are identical and interchangeable — the claimed flag lives in the Scan contract — so use Claim Nº 1. Read Claim Nº 1.preview(tokenId), which returns (amount, fee, open): amounts are Matte 2,500 · Satin 12,500 · Lustrous 60,000 · Royal 250,000 LINT, set by the day's unique participants (Scan.dayParticipants(dayId)); the fee is 0.000277 BNB per Node, 0.000555 BNB for a Royal Node. First confirm Scan.ownerOf(tokenId) = my wallet and Scan.scanInfo(tokenId) shows claimed = false. If open = false, send nothing — tell me the exact opening time from Scan.claimOpensAt(dayId) (the day seals at 12:00 UTC and claims open 6 hours later) and claim after it. If open = true, call Claim Nº 1.claim(tokenId) with value = fee exactly. The Node is kept, never burned, and claims never expire. Report each claim's transaction hash and the LINT received.";
+  if(lane==="burn") return "You are my agent for Seolint on BNB Chain. "+SKILL+" "+CONTRACTS+" My wallet is "+wallet+". Use the burn lane to resolve ONE extra Scan into today's Pearl, beyond my daily ten. Steps: (1) Read Scan.BURN_COST() = 50,000 LINT; confirm my LINT balance covers it and the day's 1,200 cap (Scan.mintedInDay(Scan.currentDay())) has not been reached — and confirm the burn with me before sending anything. (2) The Scan contract spends my LINT via burnFrom, so if LINT.allowance(my wallet, Scan) is below the burn cost, first call LINT.approve(Scan, 50,000 LINT) and wait for it to confirm. (3) Call Scan.mintWithBurn() — no BNB. The day seals at 12:00 UTC. Report the approve and mint transactions, the new Scan tokenId, and its Scan.scanInfo (kind, Royal flag). When the Pearl opens (seal + 6 hours), claim its $LINT — the claim lane of the Prompt Centre on seolint.xyz has the exact steps. Claims never expire.";
+  return "You are my agent for Seolint on BNB Chain. "+SKILL+" "+CONTRACTS+" Read the state of Scan Nº "+scan+" for wallet "+wallet+" — READ-ONLY: do not send any transaction for this check. Call Scan.scanInfo("+scan+"), which returns (dayId, dayIndex, kind, royal, claimed) — kind is 0 Cotton / 1 Wool / 2 Silk, and royal was fixed by its seed at resolve (seed % 1000 ≥ 970). Call Scan.ownerOf("+scan+") for who holds it, Scan.dayParticipants(dayId) for its day's density, and Claim Nº 1.preview("+scan+"), which returns (amount, fee, open) — exactly what it claims and whether the window is open; the opening time is Scan.claimOpensAt(dayId) (the day seals at 12:00 UTC, claims open 6 hours later and never expire). Report all of it in plain words, including whether the claim has already been taken (claimed = true, or a preview amount of 0).";
 }
 var out=document.getElementById("prompt-out"), fb=document.getElementById("prompt-feedback");
 var laneBtns=Array.prototype.slice.call(document.querySelectorAll("[data-lane-btn]"));
@@ -2385,6 +2488,298 @@ var fFb=document.getElementById("free-copy-feedback"), fTxt=document.getElementB
 if(fCopy)fCopy.addEventListener("click",function(){ if(fTxt)copyText(fTxt.textContent,fFb); });
 if(fDl)fDl.addEventListener("click",function(){ if(fTxt){ downloadText(fTxt.textContent,"seolint-prompt-free.txt"); if(fFb){fFb.textContent="✓ Downloaded — seolint-prompt-free.txt"; fFb.className="feedback ok";} } });
 render();
+})();
+</script>
+<script>
+(function(){
+"use strict";
+/* ---------- SEOLINT LIVE — this page reads and writes the real contracts.
+   Reads go to public BNB Chain RPC endpoints (eth_call); writes go through
+   the reader's own wallet (window.ethereum). Function selectors below are
+   keccak-256 of the exact signatures in the Sourcify-verified sources.
+   Day math follows the contract: currentDay() turns at 12:00 UTC, and
+   Pearl Nº 1 is dayId 20777 (its dayStart is the 12:00 UTC of launch day),
+   so Pearl Nº = dayId − 20776. ---------- */
+var RPCS=["https://bsc-dataseed.binance.org","https://bsc-dataseed1.defibit.io","https://bsc.publicnode.com","https://bsc-dataseed1.ninicoin.io"];
+var ADDR={ lint:"0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f", scan:"0xb4139ecb4f897e891f768d2ab3b5c3a380ecdcd3", pass:"0xd0627633102ea1f47874229fbfd4a9cee20b360e",
+  claim1:"0x5ddfffdd14152f40252393ccc53a3e26939acfe5", claim2:"0x8ed016d8fd6ec924dd1c910ed4bbf69050dba901", claim3:"0xb6d32881e7d519636262d702652055fb12d4c87f" };
+var SEL={ mintOpen:"0x24bbd049", currentDay:"0x5c9302c9", totalMinted:"0xa2309ff8", mintedInDay:"0x3d46787f", dayParticipants:"0xb9ddc566",
+  freeRemaining:"0xd9b7f45c", freeUsed:"0xf35f8fe8", passUsed:"0x926e7dea", walletDayCount:"0xaba93ae7", nextPaidPrice:"0x7f9a97d1",
+  hasAgentId:"0x4eab3ef2", scanInfo:"0xb4e179be", ownerOf:"0x6352211e", balanceOf:"0x70a08231", claimOpensAt:"0xd0eec3d0",
+  burnCost:"0x4e5510e5", passPrice:"0x8d859f3e", passMint:"0xa0712d68", mintFree:"0x8ab53447", mintPaid:"0x69907b9b",
+  mintWithPass:"0xface47fc", mintWithBurn:"0xdcbc27ba", claim:"0x379607f5", preview:"0xc317c377",
+  approve:"0x095ea7b3", allowance:"0xdd62ed3e" };
+var PEARL_EPOCH=20776;
+var rpcIdx=0;
+function rpcReq(method,params){
+  var tries=0;
+  function attempt(){
+    var url=RPCS[(rpcIdx+tries)%RPCS.length];
+    var ctrl=("AbortController" in window)?new AbortController():null;
+    var to=ctrl?setTimeout(function(){ctrl.abort();},14000):null;
+    return fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({jsonrpc:"2.0",id:1,method:method,params:params}),signal:ctrl?ctrl.signal:undefined})
+      .then(function(r){ if(to)clearTimeout(to); return r.json(); })
+      .then(function(j){ if(j&&j.result!=null){ rpcIdx=(rpcIdx+tries)%RPCS.length; return j.result; } throw new Error("rpc"); })
+      .catch(function(e){ if(to)clearTimeout(to); tries++; if(tries<RPCS.length)return attempt(); throw e; });
+  }
+  return attempt();
+}
+function ethCall(to,data){ return rpcReq("eth_call",[{to:to,data:data},"latest"]).catch(function(){ return null; }); }
+function word(hex,i){ return (!hex||hex.length<66+i*64)?"0":hex.slice(2+i*64,66+i*64); }
+function wBig(hex,i){ return BigInt("0x"+word(hex,i)); }
+function wNum(hex,i){ return Number(wBig(hex,i)); }
+function wBool(hex,i){ return wBig(hex,i)!==0n; }
+function uArg(n){ return BigInt(n).toString(16).padStart(64,"0"); }
+function aArg(a){ return a.slice(2).toLowerCase().padStart(64,"0"); }
+function fmtInt(n){ return Number(n).toLocaleString("en-US"); }
+function fmtLint(wei){ return fmtInt(wei/1000000000000000000n); }
+function fmtBnb(wei){ var s=(Number(wei)/1e18).toFixed(6); return s.replace(/0+$/,"").replace(/\.$/,".0"); }
+function tierFor(p){ return p<25?{name:"MATTE",amt:"2,500"}:p<=100?{name:"SATIN",amt:"12,500"}:{name:"LUSTROUS",amt:"60,000"}; }
+function $(id){ return document.getElementById(id); }
+function setText(id,txt){ var el=$(id); if(el)el.textContent=txt; }
+
+/* shared live API for the Pearl Checker and the Royal Check */
+function slScanInfo(n){
+  return ethCall(ADDR.scan,SEL.scanInfo+uArg(n)).then(function(r){
+    if(!r||r==="0x")return null;
+    return { dayId:wNum(r,0), dayIndex:wNum(r,1), kind:wNum(r,2), royal:wBool(r,3), claimed:wBool(r,4) };
+  });
+}
+function slOwnerOf(n){
+  return ethCall(ADDR.scan,SEL.ownerOf+uArg(n)).then(function(r){
+    if(!r||r==="0x")return null; return "0x"+word(r,0).slice(24);
+  });
+}
+function slClaimPreview(n){
+  return ethCall(ADDR.claim1,SEL.preview+uArg(n)).then(function(r){
+    if(!r||r==="0x")return null;
+    return { amount:wBig(r,0)/1000000000000000000n, feeWei:wBig(r,1), fee:fmtBnb(wBig(r,1)), open:wBool(r,2) };
+  });
+}
+function slClaimOpensAt(dayId){ return ethCall(ADDR.scan,SEL.claimOpensAt+uArg(dayId)).then(function(r){ return r?wNum(r,0):0; }); }
+function slTotalMinted(){ return ethCall(ADDR.scan,SEL.totalMinted).then(function(r){ return r?wNum(r,0):0; }); }
+window.__sl={ ready:false, scanInfo:slScanInfo, ownerOf:slOwnerOf, claimPreview:slClaimPreview, claimOpensAt:slClaimOpensAt, totalMinted:slTotalMinted,
+  pearlNo:function(dayId){ return dayId-PEARL_EPOCH; } };
+
+/* ---------- live reads → the panel, the ledger, the chip, the timeline ---------- */
+var liveStatus=$("live-status");
+function refresh(){
+  if(liveStatus&&!window.__sl.ready)liveStatus.textContent="Reading the chain…";
+  return Promise.all([
+    rpcReq("eth_blockNumber",[]).catch(function(){ return null; }),
+    ethCall(ADDR.scan,SEL.mintOpen), ethCall(ADDR.pass,SEL.mintOpen), ethCall(ADDR.scan,SEL.currentDay)
+  ]).then(function(r0){
+    var block=r0[0]?parseInt(r0[0],16):null, scanOpen=r0[1]?wBool(r0[1],0):null, passOpen=r0[2]?wBool(r0[2],0):null;
+    var day=r0[3]?wNum(r0[3],0):null;
+    if(day==null)throw new Error("no day");
+    return Promise.all([
+      ethCall(ADDR.scan,SEL.mintedInDay+uArg(day)), ethCall(ADDR.scan,SEL.dayParticipants+uArg(day)),
+      ethCall(ADDR.scan,SEL.freeRemaining), ethCall(ADDR.scan,SEL.totalMinted), ethCall(ADDR.pass,SEL.totalMinted),
+      ethCall(ADDR.lint,SEL.balanceOf+aArg(ADDR.claim1)), ethCall(ADDR.lint,SEL.balanceOf+aArg(ADDR.claim2)), ethCall(ADDR.lint,SEL.balanceOf+aArg(ADDR.claim3))
+    ]).then(function(r){
+      var minted=r[0]?wNum(r[0],0):0, parts=r[1]?wNum(r[1],0):0, free=r[2]?wNum(r[2],0):0;
+      var pool=(r[5]?wBig(r[5],0):0n)+(r[6]?wBig(r[6],0):0n)+(r[7]?wBig(r[7],0):0n);
+      var pearl=day-PEARL_EPOCH;
+      setText("lv-pearl","Nº "+pearl);
+      setText("lv-threads",fmtInt(minted)); setText("lv-agents",fmtInt(parts)); setText("lv-free",fmtInt(free));
+      setText("lv-scans",r[3]?fmtInt(wNum(r[3],0)):"—"); setText("lv-passes",r[4]?fmtInt(wNum(r[4],0)):"—");
+      setText("lv-pool",fmtLint(pool)); setText("ledger-free",fmtInt(free));
+      setText("lv-mint",(scanOpen?"OPEN":"CLOSED")+" · "+(passOpen?"OPEN":"CLOSED"));
+      setText("chip-pearl",String(pearl));
+      setText("chip-mint",scanOpen&&passOpen?"MINT OPEN":(scanOpen||passOpen?"MINT PARTLY OPEN":"MINT CLOSED"));
+      if(window.__fig1SetToday)window.__fig1SetToday(minted,parts);
+      window.__slTier=tierFor(parts);
+      var dayStart=day*86400+43200, idx=Math.floor((Date.now()/1000-dayStart)/21600); if(idx<0)idx=0; if(idx>3)idx=3;
+      var letters=["A","B","C","D"];
+      document.querySelectorAll("#timeline .tl-step").forEach(function(c){ c.classList.toggle("now",c.getAttribute("data-phase")===letters[idx]); });
+      setText("phase-now",letters[idx]);
+      window.__sl.ready=true; window.__sl.day=day;
+      if(liveStatus)liveStatus.textContent="Live · BNB Chain"+(block?" · block "+fmtInt(block):"")+" · updated "+new Date().toLocaleTimeString("en-GB")+" · refreshes every minute";
+      if(account)refreshMine();
+    });
+  }).catch(function(){
+    if(liveStatus)liveStatus.textContent="Could not reach a BNB Chain RPC just now — reads retry automatically every minute.";
+  });
+}
+
+/* ---------- wallet + real transactions ---------- */
+var account=null, claimState=null;
+var txFb=$("tx-feedback"), claimResult=$("claim-result");
+function fb(txt,ok){ if(txFb){ txFb.textContent=txt; txFb.className="feedback "+(ok==null?"":ok?"ok":"bad"); } }
+function needWallet(){
+  if(account)return true;
+  fb("Connect your wallet first — the button above the actions. Reads work without one; minting and claiming are signed by your wallet.",false);
+  return false;
+}
+function refreshMine(){
+  if(!account)return;
+  var dayP=ethCall(ADDR.scan,SEL.currentDay);
+  dayP.then(function(dr){
+    var day=dr?wNum(dr,0):0;
+    return Promise.all([
+      ethCall(ADDR.scan,SEL.walletDayCount+uArg(day)+aArg(account)),
+      ethCall(ADDR.scan,SEL.freeUsed+uArg(day)+aArg(account)),
+      ethCall(ADDR.scan,SEL.nextPaidPrice+aArg(account)),
+      ethCall(ADDR.scan,SEL.hasAgentId+aArg(account)),
+      ethCall(ADDR.pass,SEL.balanceOf+aArg(account)),
+      ethCall(ADDR.lint,SEL.balanceOf+aArg(account))
+    ]).then(function(r){
+      var grid=$("my-grid"); if(grid)grid.style.display="grid";
+      setText("my-count",r[0]?String(wNum(r[0],0)):"—");
+      var freeUsed=r[1]?wBool(r[1],0):false, hasId=r[3]?wBool(r[3],0):false;
+      setText("my-free",freeUsed?"Used today":(hasId?"Available":"No Agent ID held"));
+      var price=r[2]?wBig(r[2],0):0n;
+      setText("my-next",price===0n?"At the 10 / day max":fmtBnb(price)+" BNB");
+      setText("my-agent",hasId?"Registered ✓":"Not registered");
+      setText("my-passbal",r[4]?fmtInt(wNum(r[4],0)):"—");
+      setText("my-lint",r[5]?fmtLint(wBig(r[5],0))+" LINT":"—");
+    });
+  }).catch(function(){});
+}
+function connect(){
+  if(!window.ethereum){ fb("No wallet found in this browser — open this page inside a wallet browser (MetaMask, Trust Wallet, Binance Wallet) to mint or claim. Every read on this page works without one.",false); return; }
+  window.ethereum.request({method:"eth_requestAccounts"}).then(function(accs){
+    account=(accs&&accs[0])?accs[0]:null;
+    if(!account)throw new Error("no account");
+    return window.ethereum.request({method:"eth_chainId"});
+  }).then(function(chainId){
+    if(chainId!=="0x38"){
+      return window.ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:"0x38"}]}).catch(function(e){
+        if(e&&e.code===4902){
+          return window.ethereum.request({method:"wallet_addEthereumChain",params:[{chainId:"0x38",chainName:"BNB Smart Chain",nativeCurrency:{name:"BNB",symbol:"BNB",decimals:18},rpcUrls:["https://bsc-dataseed.binance.org"],blockExplorerUrls:["https://bscscan.com"]}]});
+        }
+        throw e;
+      });
+    }
+  }).then(function(){
+    var wb=$("wallet-btn"); if(wb)wb.textContent="Wallet connected";
+    setText("wallet-addr",account+" · BNB Chain");
+    fb("Wallet connected — your numbers for today are below the panel stats.",true);
+    refreshMine();
+  }).catch(function(e){
+    fb(e&&e.code===4001?"Connection rejected in the wallet — nothing was sent.":"Could not connect: "+((e&&e.message)||e),false);
+  });
+}
+if(window.ethereum&&window.ethereum.on){
+  window.ethereum.on("accountsChanged",function(accs){ account=(accs&&accs[0])?accs[0]:null; claimState=null; var cs=$("claim-send"); if(cs)cs.disabled=true;
+    if(account){ setText("wallet-addr",account+" · BNB Chain"); refreshMine(); } else { setText("wallet-addr","No wallet connected — reads work without one; minting and claiming need your wallet."); var g=$("my-grid"); if(g)g.style.display="none"; } });
+  window.ethereum.on("chainChanged",function(){ refresh(); if(account)refreshMine(); });
+}
+function sendTx(to,data,valueWei,label){
+  fb("Confirm in your wallet — "+label+"…");
+  return window.ethereum.request({method:"eth_sendTransaction",params:[{from:account,to:to,data:data,value:"0x"+valueWei.toString(16)}]})
+  .then(function(hash){
+    fb("Sent — waiting for the chain to confirm · tx "+hash.slice(0,14)+"…");
+    var tries=0;
+    return new Promise(function(resolve){
+      (function poll(){
+        rpcReq("eth_getTransactionReceipt",[hash]).then(function(rc){
+          if(rc){ resolve(rc.status==="0x1"?{ok:true,hash:hash}:{ok:false,hash:hash}); return; }
+          if(++tries<48)setTimeout(poll,2500); else resolve({ok:null,hash:hash});
+        }).catch(function(){ if(++tries<48)setTimeout(poll,2500); else resolve({ok:null,hash:hash}); });
+      })();
+    });
+  }).then(function(res){
+    if(res.ok===true){ fb("✓ Confirmed on-chain — "+label+" · tx "+res.hash.slice(0,14)+"… · full record: bscscan.com/tx/"+res.hash,true); }
+    else if(res.ok===false){ fb("✗ The transaction reverted on-chain — "+label+" · tx "+res.hash.slice(0,14)+"…",false); }
+    else { fb("Sent, still unconfirmed after two minutes — check tx "+res.hash.slice(0,14)+"… on BscScan.",false); }
+    refresh(); refreshMine();
+    return res.ok===true;
+  }).catch(function(e){
+    fb(e&&e.code===4001?"Rejected in the wallet — nothing was sent.":"Wallet error: "+(((e&&e.message)||String(e)).slice(0,140)),false);
+    return false;
+  });
+}
+function guard(btnId,fn){ var b=$(btnId); if(b)b.addEventListener("click",fn); }
+guard("wallet-btn",connect);
+guard("tx-free",function(){
+  if(!needWallet())return;
+  Promise.all([ethCall(ADDR.scan,SEL.mintOpen),ethCall(ADDR.scan,SEL.hasAgentId+aArg(account)),ethCall(ADDR.scan,SEL.currentDay)])
+  .then(function(r){
+    if(r[0]&&!wBool(r[0],0)){ fb("The Scan mint reads CLOSED on-chain right now — nothing to send.",false); return; }
+    if(r[1]&&!wBool(r[1],0)){ fb("Your wallet holds no Binance Agent ID in the registry — the free lane would revert. The Pass lane (below) needs no Agent ID.",false); return; }
+    var day=r[2]?wNum(r[2],0):0;
+    return Promise.all([ethCall(ADDR.scan,SEL.freeUsed+uArg(day)+aArg(account)),ethCall(ADDR.scan,SEL.freeRemaining)]).then(function(r2){
+      if(r2[0]&&wBool(r2[0],0)){ fb("You have already used today's free thread — it returns with the next day at 12:00 UTC.",false); return; }
+      if(r2[1]&&wNum(r2[1],0)<=0){ fb("This phase's free quota (300) is full — a fresh 300 opens at the next 6-hour mark.",false); return; }
+      sendTx(ADDR.scan,SEL.mintFree,0n,"mintFree() — your free Scan");
+    });
+  }).catch(function(){ fb("A pre-flight read failed — try again in a moment.",false); });
+});
+guard("tx-paid",function(){
+  if(!needWallet())return;
+  ethCall(ADDR.scan,SEL.nextPaidPrice+aArg(account)).then(function(r){
+    var price=r?wBig(r,0):0n;
+    if(price===0n){ fb("You are at the 10-per-day max for the normal lanes — the burn lane (below) still resolves one more.",false); return; }
+    sendTx(ADDR.scan,SEL.mintPaid,price,"mintPaid() — one paid Scan at "+fmtBnb(price)+" BNB");
+  });
+});
+guard("tx-passlane",function(){
+  if(!needWallet())return;
+  Promise.all([ethCall(ADDR.pass,SEL.balanceOf+aArg(account)),ethCall(ADDR.scan,SEL.currentDay)]).then(function(r){
+    var bal=r[0]?wNum(r[0],0):0, day=r[1]?wNum(r[1],0):0;
+    if(bal<=0){ fb("You hold no Seolint Pass — buy one with the button beside this one first, then mint with it.",false); return; }
+    return ethCall(ADDR.scan,SEL.passUsed+uArg(day)+aArg(account)).then(function(u){
+      if(u&&wBool(u,0)){ fb("Your Pass lane is already used today — it returns with the next day at 12:00 UTC.",false); return; }
+      sendTx(ADDR.scan,SEL.mintWithPass,0n,"mintWithPass() — one Scan via your Pass");
+    });
+  });
+});
+guard("tx-buypass",function(){
+  if(!needWallet())return;
+  ethCall(ADDR.pass,SEL.passPrice).then(function(r){
+    var price=r?wBig(r,0):1230000000000000n;
+    sendTx(ADDR.pass,SEL.passMint+uArg(1),price,"Pass.mint(1) — one Genesis Pass at "+fmtBnb(price)+" BNB");
+  });
+});
+guard("tx-burn",function(){
+  if(!needWallet())return;
+  Promise.all([ethCall(ADDR.scan,SEL.burnCost),ethCall(ADDR.lint,SEL.balanceOf+aArg(account)),ethCall(ADDR.lint,SEL.allowance+aArg(account)+aArg(ADDR.scan))])
+  .then(function(r){
+    var cost=r[0]?wBig(r[0],0):50000000000000000000000n, bal=r[1]?wBig(r[1],0):0n, allow=r[2]?wBig(r[2],0):0n;
+    if(bal<cost){ fb("The burn lane costs "+fmtLint(cost)+" LINT — your balance is "+fmtLint(bal)+" LINT.",false); return; }
+    if(allow<cost){
+      fb("First step: approve the Scan contract to burn "+fmtLint(cost)+" LINT from your wallet…");
+      sendTx(ADDR.lint,SEL.approve+aArg(ADDR.scan)+uArg(cost),0n,"approve(Scan, "+fmtLint(cost)+" LINT)").then(function(ok){
+        if(ok)sendTx(ADDR.scan,SEL.mintWithBurn,0n,"mintWithBurn() — one extra Scan");
+      });
+      return;
+    }
+    sendTx(ADDR.scan,SEL.mintWithBurn,0n,"mintWithBurn() — one extra Scan");
+  });
+});
+guard("claim-check",function(){
+  var inp=$("claim-input"), n=parseInt(inp&&inp.value,10);
+  claimState=null; var cs=$("claim-send"); if(cs)cs.disabled=true;
+  if(isNaN(n)||n<1){ if(claimResult)claimResult.textContent="Enter a Scan number first."; return; }
+  if(claimResult)claimResult.textContent="Reading Scan Nº "+n+" from the chain…";
+  Promise.all([slScanInfo(n),slOwnerOf(n),slClaimPreview(n)]).then(function(r){
+    var info=r[0], owner=r[1], pv=r[2];
+    if(!info){ return slTotalMinted().then(function(tm){ if(claimResult)claimResult.textContent="Scan Nº "+n+" does not exist yet — "+fmtInt(tm)+" Scans minted so far."; }); }
+    return slClaimOpensAt(info.dayId).then(function(opensAt){
+      claimState={n:n,feeWei:pv?pv.feeWei:0n,open:pv?pv.open:false,claimed:info.claimed,owner:owner};
+      var mine=account&&owner&&account.toLowerCase()===owner.toLowerCase();
+      var txt="Scan Nº "+n+" · Pearl Nº "+(info.dayId-PEARL_EPOCH)+" · "+["Cotton","Wool","Silk"][info.kind]+(info.royal?" · ROYAL":"")+
+        " · held by "+(owner?owner.slice(0,6)+"…"+owner.slice(-4):"—")+". ";
+      if(info.claimed)txt+="Its $LINT has already been claimed.";
+      else if(pv&&pv.open)txt+="Claim open now: "+fmtInt(pv.amount)+" LINT for a fee of "+pv.fee+" BNB."+(account?(mine?" It is yours — the Claim button sends it.":" Connect the wallet that holds it to claim."):" Connect the wallet that holds it to claim.");
+      else if(pv)txt+="It will claim "+fmtInt(pv.amount)+" LINT (fee "+pv.fee+" BNB) — the window opens "+new Date(opensAt*1000).toUTCString().replace(" GMT"," UTC")+" and never expires.";
+      if(claimResult)claimResult.textContent=txt;
+      if(cs)cs.disabled=!(claimState.open&&!claimState.claimed&&mine);
+    });
+  }).catch(function(){ if(claimResult)claimResult.textContent="The chain read failed — try again in a moment."; });
+});
+guard("claim-send",function(){
+  if(!needWallet()||!claimState)return;
+  slClaimPreview(claimState.n).then(function(pv){
+    if(!pv||!pv.open){ fb("That Pearl's claim window is not open yet — re-check the claim above for its opening time.",false); return; }
+    sendTx(ADDR.claim1,SEL.claim+uArg(claimState.n),pv.feeWei,"claim("+claimState.n+") on Claim Nº 1 — "+fmtInt(pv.amount)+" LINT");
+  });
+});
+
+/* first read on load, then every minute */
+refresh();
+setInterval(refresh,60000);
 })();
 </script>
 </body>

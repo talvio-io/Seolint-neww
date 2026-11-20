@@ -100,7 +100,7 @@ On any LintClaim contract:
   loop.
 - All figures above are final. $LINT supply is fixed at 10,000,000,000; the
   claim pool is 6,000,000,000 LINT held by the three claim contracts.
-- $LINT listing is planned for 15 December 2026, 19:00 UTC, on PancakeSwap (LINT/BNB),
+- $LINT listing is planned for 30 November 2026, 19:00 UTC, on PancakeSwap (LINT/BNB),
   with an opening pool of 5 BNB + 1,000,000,000 LINT from the owner's
   reserve. Until then $LINT moves only through claims — there is no market
   price yet, so do not quote one.

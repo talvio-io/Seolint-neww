@@ -861,14 +861,14 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
             <div class="row"><span class="k">Chain</span><span class="v">BNB Chain</span></div>
             <div class="row"><span class="k">Contract</span><span class="v gold">Deployed — BNB Chain</span></div>
             <div class="row"><span class="k">$LINT address</span><span class="v"><a href="https://bscscan.com/address/0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright);text-decoration:none;border-bottom:1px solid var(--line)">0x2b68…9ef7f ↗</a></span></div>
-            <div class="row"><span class="k">Listing</span><span class="v gold">15 Dec 2026 · 19:00 UTC · PancakeSwap</span></div>
+            <div class="row"><span class="k">Listing</span><span class="v gold">30 Nov 2026 · 19:00 UTC · PancakeSwap</span></div>
             <div class="row"><span class="k">Opening pool</span><span class="v">5 BNB + 1,000,000,000 LINT</span></div>
           </div>
           <div class="supply-bar" role="img" aria-label="Supply split: 60 percent of the 10 billion LINT supply sits in the claim pool, 40 percent outside it"><div class="pool"></div><div class="rest"></div></div>
           <div class="supply-key"><span><i class="sw-gold"></i>Claim pool · 6,000,000,000</span><span><i class="sw-dim"></i>Outside the pool · 4,000,000,000</span></div>
-          <p class="note" style="margin-top:16px">Every claim in §02 is paid out of the pool — 2,500, 12,500 or 60,000 LINT by the day&rsquo;s density, 250,000 for a Royal Node. The remaining 40% never enters a claim; it is held outside the pool contracts — and 1,000,000,000 of it seeds the listing pool on 15 December 2026, paired with 5 BNB at 1 BNB : 200,000,000 LINT, so claimed LINT meets a public price the moment trading opens.</p>
+          <p class="note" style="margin-top:16px">Every claim in §02 is paid out of the pool — 2,500, 12,500 or 60,000 LINT by the day&rsquo;s density, 250,000 for a Royal Node. The remaining 40% never enters a claim; it is held outside the pool contracts — and 1,000,000,000 of it seeds the listing pool on 30 November 2026, paired with 5 BNB at 1 BNB : 200,000,000 LINT, so claimed LINT meets a public price the moment trading opens.</p>
           <div class="list-cd">
-            <div class="lcd-label">Listing countdown — 15 Dec 2026 · 19:00 UTC</div>
+            <div class="lcd-label">Listing countdown — 30 Nov 2026 · 19:00 UTC</div>
             <div class="lcd-grid" id="lcd-grid">
               <div><div class="lcd-v" id="lcd-d">--</div><div class="lcd-k">Days</div></div>
               <div><div class="lcd-v" id="lcd-h">--</div><div class="lcd-k">Hours</div></div>
@@ -917,7 +917,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
               <li><span class="st done">Done</span><span><b>Mint open</b> — the Pass mint is open, the Scan&rsquo;s base URI is set and the Scan mint is open; Pearl Nº 1 is winding toward the next 12:00 UTC seal.</span></li>
               <li><span class="st done">Done</span><span><b>Sources verified open</b> — all six contracts are exact-match verified on Sourcify; anyone can read the exact code that runs on-chain.</span></li>
               <li><span class="st done">Done</span><span><b>This page is wired to the chain</b> — the <a href="#live-panel" style="color:var(--gold-bright)">Live panel</a> reads the contracts directly and sends real mint &amp; claim transactions from your wallet; the Pearl Checker and Royal Check read <span class="mono" style="font-size:12.5px">scanInfo()</span> live.</span></li>
-              <li><span class="st next">Next</span><span><b>$LINT listing — 15 December 2026, 19:00 UTC</b> — $LINT lists on PancakeSwap with the deepest opening pool: <b>5 BNB + 1,000,000,000 LINT</b>, drawn from the reserve outside the claim pool. The claim pool&rsquo;s 6,000,000,000 LINT stays untouched, and daily claims keep running straight through the listing.</span></li>
+              <li><span class="st next">Next</span><span><b>$LINT listing — 30 November 2026, 19:00 UTC</b> — $LINT lists on PancakeSwap with the deepest opening pool: <b>5 BNB + 1,000,000,000 LINT</b>, drawn from the reserve outside the claim pool. The claim pool&rsquo;s 6,000,000,000 LINT stays untouched, and daily claims keep running straight through the listing.</span></li>
             </ul>
             <p class="note" style="margin-top:16px">The pool is funded, so the first Pearl&rsquo;s claims are payable from the moment it seals — and with the mint open, every lane on this page is live.</p>
           </div>
@@ -1428,8 +1428,8 @@ var chipCd=document.getElementById("chip-countdown"),boardCd=document.getElement
 function tickCountdown(){var txt=fmt(nextSeal()-Date.now());if(chipCd)chipCd.textContent=txt;if(boardCd)boardCd.textContent=txt;}
 tickCountdown(); setInterval(tickCountdown,1000);
 
-/* ---------- listing countdown — 15 Dec 2026, 19:00 UTC ---------- */
-var LIST_AT=Date.UTC(2026,11,15,19,0,0);
+/* ---------- listing countdown — 30 Nov 2026, 19:00 UTC ---------- */
+var LIST_AT=Date.UTC(2026,10,30,19,0,0);
 var lcdD=document.getElementById("lcd-d"),lcdH=document.getElementById("lcd-h"),lcdM=document.getElementById("lcd-m"),lcdS=document.getElementById("lcd-s"),lcdGrid=document.getElementById("lcd-grid"),lcdLive=document.getElementById("lcd-live");
 function tickListing(){
   if(!lcdD)return;

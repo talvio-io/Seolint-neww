@@ -48,14 +48,21 @@ All mint functions are on the Scan contract.
    - Read the exact price first: `nextPaidPrice(wallet)`. Send exactly that
      value; overpayment is refunded.
 3. **Pass lane — `mintWithPass()`** (no payment)
-   - Requires holding a Seolint Pass NFT. 1 extra Scan per day, beyond the
-     normal lanes. Buy a Pass on the Pass contract: `mint(qty)` at
-     **0.00123 BNB** each. The Pass never expires and is transferable.
+   - Requires holding a Seolint Pass NFT. 1 extra Scan per day. Buy a Pass
+     on the Pass contract: `mint(qty)` at **0.00123 BNB** each. The Pass
+     never expires and is transferable.
 4. **Burn lane — `mintWithBurn()`** (no BNB)
    - Burns **50,000 LINT**: first `approve` the Scan contract for at least
      50,000 LINT on the token contract, then call `mintWithBurn()`.
-   - 1 extra Scan per burn, beyond the 10/day wallet max. The 1,200 daily
-     cap still applies.
+   - Repeatable: each burn resolves one more Scan. There is no per-day
+     burn limit; only the 1,200 daily cap applies.
+
+**Order matters.** Every mint — free, paid, Pass and burn — increments the
+wallet's daily count, and the free/paid lanes (and the paid price ladder)
+read that count. So resolve in this order: **free first, then paid, then
+Pass, then burn.** A wallet can therefore hold at most 10 Scans from the
+free/paid lanes per day, plus 1 from a Pass, plus any number from burns —
+and the free mint is cheapest while the count is low.
 
 ## What a Scan is worth
 

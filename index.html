@@ -508,8 +508,8 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       </figure>
       <p class="fig-caption"><b>Fig. 1.</b> Today&rsquo;s Pearl, drawn once and in full — as a <b>globe</b>. One great sphere on black: continents built from <b>thousands of bone-white micro dots</b> packed over the land, the Americas to the left, Africa and Europe to the right, the oceans left dark between them. Over land and sea ride the <b>lit nodes</b> — some forty glowing Scans, joined neighbour to neighbour by a fine <b>dotted net</b> and ringed by a single orbit line. Off Brazil&rsquo;s east coast, one node burns <b>red</b>, brighter than all the rest — the day&rsquo;s Royal focus. About three Scans in a hundred are Royal, fixed by each one&rsquo;s seed the moment it resolves. <b>Every node is one Scan — tap a node</b>, or tap the land itself, to read its fibre, its rarity, and what it claims.</p>
       <div class="ledger" aria-label="Today's Pearl ledger">
-        <div><div class="v"><span id="fiber-count">0</span><small> / 1,200</small></div><div class="kk">Threads gathered</div><div class="density-track" aria-hidden="true"><div class="density-fill" id="density-fill" style="width:0%"></div></div></div>
-        <div><div class="v" id="density-label" style="font-size:22px;padding-top:5px">Gathering…</div><div class="kk">Density so far</div></div>
+        <div><div class="v"><span id="fiber-count">—</span><small> / 1,200</small></div><div class="kk">Threads gathered</div><div class="density-track" aria-hidden="true"><div class="density-fill" id="density-fill" style="width:0%"></div></div></div>
+        <div><div class="v" id="density-label" style="font-size:22px;padding-top:5px">Reading the chain…</div><div class="kk">Density so far</div></div>
         <div><div class="v" id="ledger-free">—</div><div class="kk">Free left this phase · live</div></div>
         <div><div class="v">1,200</div><div class="kk">Cap / day</div></div>
         <div><div class="v gold" id="board-countdown">--:--:--</div><div class="kk">Seals in · 12:00 UTC</div></div>
@@ -599,6 +599,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
           <div><div class="v gold" id="lv-mint">—</div><div class="kk">Scan mint · Pass mint</div></div>
         </div>
         <p class="feedback" id="live-status" aria-live="polite">Reading the chain…</p>
+        <div class="tool-row" style="margin-top:10px"><button class="btn" id="live-refresh" type="button">Refresh now</button></div>
         <div class="wallet-row">
           <button class="btn fill" id="wallet-btn" type="button">Connect wallet</button>
           <span class="waddr" id="wallet-addr">No wallet connected — reads work without one; minting and claiming need your wallet.</span>
@@ -1405,7 +1406,7 @@ function fmt(ms){var s=Math.max(0,Math.floor(ms/1000));var hh=String(Math.floor(
 var chipCd=document.getElementById("chip-countdown"),boardCd=document.getElementById("board-countdown");
 function tickCountdown(){var txt=fmt(nextSeal()-Date.now());if(chipCd)chipCd.textContent=txt;if(boardCd)boardCd.textContent=txt;}
 tickCountdown(); setInterval(tickCountdown,1000);
-(function(){var h=new Date().getUTCHours();var phase=h<6?"A":h<12?"B":h<18?"C":"D";
+(function(){var h=new Date().getUTCHours();var phase=(h>=12&&h<18)?"A":h>=18?"B":h<6?"C":"D";
   document.querySelectorAll("#timeline .tl-step").forEach(function(c){if(c.getAttribute("data-phase")===phase)c.classList.add("now");});
   var label=document.getElementById("phase-now");if(label)label.textContent=phase;})();
 
@@ -1895,8 +1896,16 @@ function hashNum(n){var h=(n*2654435761)>>>0;h^=h>>>13;h=Math.imul(h,0x5BD1E995)
     octx.textAlign="right"; octx.fillText("EVERY NODE · ONE SCAN", W-28, 34); octx.textAlign="left";
   })();
 
-  var active=-1, activeNode=-1, curP=0, ledgerDone=false;
+  var active=-1, activeNode=-1, curP=0, ledgerDone=false, fed=false;
   function ledger(p){
+    /* until the live panel has fed this plate a real chain read, the ledger
+       shows no number at all — never a placeholder count */
+    if(!fed){
+      if(countEl)countEl.textContent="—";
+      if(fillEl)fillEl.style.width="0%";
+      if(densEl)densEl.textContent="Reading the chain…";
+      return;
+    }
     var c=Math.round(TARGET*p);
     if(countEl)countEl.textContent=c;
     if(fillEl)fillEl.style.width=(c/1200*100)+"%";
@@ -1905,7 +1914,7 @@ function hashNum(n){var h=(n*2654435761)>>>0;h^=h>>>13;h=Math.imul(h,0x5BD1E995)
   /* the live panel feeds the chain's own counts into this plate:
      threads = mintedInDay(today), participants = dayParticipants(today) */
   window.__fig1SetToday=function(threads,participants){
-    TARGET=threads; PARTICIPANTS=participants; TIER=tierFor(participants); ledger(1);
+    fed=true; TARGET=threads; PARTICIPANTS=participants; TIER=tierFor(participants); ledger(1);
   };
   function drawFrame(p,rotDeg,ts){
     curP=p;
@@ -2389,27 +2398,6 @@ paint();
 <script>
 (function(){
 "use strict";
-/* Copy the agent instruction — clipboard first, manual selection as the
-   fallback, with the result said out loud in the feedback line. */
-var btn=document.getElementById("agent-copy"), txt=document.getElementById("agent-prompt"), fb=document.getElementById("agent-feedback");
-if(!btn||!txt||!fb)return;
-btn.addEventListener("click",function(){
-  var s=txt.textContent.trim();
-  function done(ok){ fb.textContent=ok?"✓ Copied — hand it to your agent.":"Select the text above and copy it by hand."; fb.className="feedback "+(ok?"ok":"bad"); }
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(s).then(function(){done(true);},function(){done(false);});
-  } else {
-    var r=document.createRange(); r.selectNodeContents(txt);
-    var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
-    var ok=false; try{ ok=document.execCommand("copy"); }catch(e){}
-    done(ok);
-  }
-});
-})();
-</script>
-<script>
-(function(){
-"use strict";
 /* ---------- Prompt Centre — one copy-ready prompt per lane, with the live
    contract addresses baked in and the reader's own details filled in.
    Shared copy/download helpers are used here, by the free-thread box and
@@ -2600,6 +2588,7 @@ function refresh(){
     });
   }).catch(function(){
     if(liveStatus)liveStatus.textContent="Could not reach a BNB Chain RPC just now — reads retry automatically every minute.";
+    if(!window.__sl.ready){ setText("fiber-count","—"); setText("density-label","Chain unreachable — retrying"); var df=$("density-fill"); if(df)df.style.width="0%"; }
   });
 }
 
@@ -2692,6 +2681,7 @@ function sendTx(to,data,valueWei,label){
   });
 }
 function guard(btnId,fn){ var b=$(btnId); if(b)b.addEventListener("click",fn); }
+guard("live-refresh",function(){ if(liveStatus)liveStatus.textContent="Reading the chain…"; refresh(); });
 guard("wallet-btn",connect);
 guard("tx-free",function(){
   if(!needWallet())return;

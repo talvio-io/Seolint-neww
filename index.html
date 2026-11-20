@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="color-scheme" content="dark"/>
 <meta name="theme-color" content="#050403"/>
-<meta name="description" content="Seolint — The Daily Strand. Every agent leaves a thread: one Scan a day winds into the day's Pearl, the plate seals at 12:00 UTC, and every thread inside claims $LINT on BNB Chain. Preview — mint opens soon."/>
+<meta name="description" content="Seolint — The Daily Strand. Every agent leaves a thread: one Scan a day winds into the day's Pearl, the plate seals at 12:00 UTC, and every thread inside claims $LINT on BNB Chain. Contracts deployed and wired on BNB Chain — mint opening is the final launch step."/>
 <meta name="twitter:site" content="@Seolintfun"/>
 <meta name="twitter:creator" content="@Seolintfun"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='14' fill='%230B0906'/%3E%3Cpath d='M63 30c-3-8-8-11-15-11-8 0-14 5-14 12 0 16 28 9 28 24 0 7-6 12-14 12-7 0-12-3-15-11' fill='none' stroke='%23F0E3B8' stroke-width='7' stroke-linecap='round'/%3E%3Ccircle cx='69' cy='62' r='6' fill='%23FF3B26'/%3E%3C/svg%3E"/>
@@ -306,6 +306,24 @@ h2.head::after{content:"";display:block;width:54px;height:2px;background:var(--a
 .supply-key .sw-gold{background:var(--gold)}
 .supply-key .sw-dim{background:#241C0E;border:1px solid var(--line)}
 
+/* §05 contracts — live addresses + launch status */
+.contracts{margin-top:56px}
+.contracts .np-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px;flex-wrap:wrap}
+.contracts .np-head .t{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.contracts .np-head .r{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.contract-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:26px}
+@media (max-width:960px){ .contract-grid{grid-template-columns:1fr} }
+.addr-row{display:flex;justify-content:space-between;gap:16px;padding:13px 2px;border-bottom:1px solid var(--line-soft);font-size:14px;align-items:baseline}
+.addr-row .k{color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-size:11px;font-weight:700;font-family:"IBM Plex Mono",monospace;white-space:nowrap;padding-top:2px}
+.addr-row a{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--gold-bright);text-decoration:none;border-bottom:1px solid var(--line);word-break:break-all;text-align:right}
+.addr-row a:hover{color:var(--bone)}
+.status-list{list-style:none;margin:6px 0 0;padding:0}
+.status-list li{display:flex;gap:14px;padding:12px 2px;border-bottom:1px solid var(--line-soft);font-size:14.5px;color:var(--bone-dim);line-height:1.6}
+.status-list li b{color:var(--bone)}
+.status-list .st{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.14em;white-space:nowrap;padding-top:4px;min-width:86px}
+.status-list .st.done{color:var(--gold-bright)}
+.status-list .st.next{color:var(--accent-bright)}
+
 /* §06 royal survey — one red voice per Royal holder */
 .survey-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start}
 .survey-card{border:1px solid var(--line);background:linear-gradient(165deg,#251C0F 0%,#181207 55%,#100B04 100%);padding:26px;box-shadow:inset 0 1px 0 rgba(248,241,220,.09),0 30px 60px -34px rgba(0,0,0,.85)}
@@ -450,7 +468,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
         <div><div class="v gold" id="board-countdown">--:--:--</div><div class="kk">Seals in · 12:00 UTC</div></div>
         <div><div class="v">30<small> / 1,000</small></div><div class="kk">Royal Pearl rate</div></div>
       </div>
-      <p class="note" style="margin-top:14px">Preview plate with example threads — the live count starts when mint opens. <span class="mono" style="letter-spacing:.08em">STATUS · MINT OPENS SOON</span> — no contract or wallet is connected yet.</p>
+      <p class="note" style="margin-top:14px">Plate shown with example threads — the live count starts the moment mint opens. <span class="mono" style="letter-spacing:.08em">STATUS · CONTRACTS LIVE ON BNB CHAIN</span> — $LINT, the Pass, the Scan and all three claim contracts are deployed and wired together, and the claim pool is funded — opening the mint is the one launch step that remains.</p>
     </div>
   </div>
 
@@ -658,7 +676,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
             </figcaption>
           </figure>
         </div>
-        <p class="note" style="margin-top:18px">Sample plates, drawn from today&rsquo;s globe. The NFT contract is not deployed yet — when it is, every resolved Scan is issued in exactly this plate, one file per Scan, and the claim travels with the NFT to whoever holds it.</p>
+        <p class="note" style="margin-top:18px">Sample plates, drawn from today&rsquo;s globe. The Scan contract is deployed on BNB Chain — when mint opens, every resolved Scan is issued in exactly this plate, one file per Scan, and the claim travels with the NFT to whoever holds it.</p>
       </div>
 
       <div class="nft-pass">
@@ -676,7 +694,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
             </figcaption>
           </figure>
         </div>
-        <p class="note" style="margin-top:18px">Sample card, drawn from the same globe photograph. Supply is unlimited — one Pass per wallet is enough — and the Pass can change hands. Like the Scan, its contract is not deployed yet; this plate is the locked format.</p>
+        <p class="note" style="margin-top:18px">Sample card, drawn from the same globe photograph. Supply is unlimited — one Pass per wallet is enough — and the Pass can change hands. The Pass contract is deployed on BNB Chain alongside the Scan; this plate is the locked format, and its mint opens at launch.</p>
       </div>
     </section>
 
@@ -696,7 +714,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       <div class="sec-head">
         <div class="sec-eyebrow"><span>§ 05 — Token &amp; Node</span><span class="r">Table 3 · The $LINT ledger</span></div>
         <h2 class="head">Ten billion threads. <em>One Node each.</em></h2>
-        <p class="lede">The token and the Node, taken whole. <strong>$LINT</strong> is fixed at <strong>10,000,000,000</strong> — three fifths of it held in the claim pool — and every Scan resolved into the day&rsquo;s Pearl becomes one <strong>Node</strong>. The figures below are the adopted system: the token is not deployed yet, and no contract is connected to this preview.</p>
+        <p class="lede">The token and the Node, taken whole. <strong>$LINT</strong> is fixed at <strong>10,000,000,000</strong> — three fifths of it held in the claim pool — and every Scan resolved into the day&rsquo;s Pearl becomes one <strong>Node</strong>. The system stands ready: $LINT, the Scan, the Pass and all three claim contracts are <strong>deployed on BNB Chain, wired together and funded</strong> — every address is listed under Contracts below, and opening the mint is the last step before Pearl Nº 1.</p>
       </div>
       <div class="token-grid">
         <div>
@@ -707,7 +725,8 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
             <div class="row"><span class="k">Claim contracts</span><span class="v">3 × 2,000,000,000 LINT</span></div>
             <div class="row"><span class="k">Outside the pool</span><span class="v">4,000,000,000 · 40%</span></div>
             <div class="row"><span class="k">Chain</span><span class="v">BNB Chain</span></div>
-            <div class="row"><span class="k">Contract</span><span class="v">Not deployed yet — preview</span></div>
+            <div class="row"><span class="k">Contract</span><span class="v gold">Deployed — BNB Chain</span></div>
+            <div class="row"><span class="k">$LINT address</span><span class="v"><a href="https://bscscan.com/address/0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright);text-decoration:none;border-bottom:1px solid var(--line)">0x2b68…9ef7f ↗</a></span></div>
           </div>
           <div class="supply-bar" role="img" aria-label="Supply split: 60 percent of the 10 billion LINT supply sits in the claim pool, 40 percent outside it"><div class="pool"></div><div class="rest"></div></div>
           <div class="supply-key"><span><i class="sw-gold"></i>Claim pool · 6,000,000,000</span><span><i class="sw-dim"></i>Outside the pool · 4,000,000,000</span></div>
@@ -726,6 +745,33 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
             <div class="row"><span class="k">Expires</span><span class="v gold">Never</span></div>
           </div>
           <p class="note" style="margin-top:16px">Two more lanes lead into the same Pearl. The <strong style="color:var(--bone-dim)">Pass</strong> — 0.00123 BNB — lets a wallet without an Agent ID resolve a Node. The <strong style="color:var(--bone-dim)">Burn lane</strong> — burn 50,000 LINT — resolves one extra Node beyond the daily ten.</p>
+        </div>
+      </div>
+
+      <div class="contracts" id="contracts">
+        <div class="np-head"><span class="t">Contracts — live on BNB Chain</span><span class="r">Verified on-chain · 20 Nov</span></div>
+        <div class="contract-grid">
+          <div>
+            <h3 class="tok-h">The six addresses</h3>
+            <div class="addr-row"><span class="k">$LINT Token</span><a href="https://bscscan.com/address/0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f" target="_blank" rel="noopener noreferrer">0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f ↗</a></div>
+            <div class="addr-row"><span class="k">Seolint Scan · SCAN</span><a href="https://bscscan.com/address/0xb4139ecb4f897e891f768d2ab3b5c3a380ecdcd3" target="_blank" rel="noopener noreferrer">0xb4139ecb4f897e891f768d2ab3b5c3a380ecdcd3 ↗</a></div>
+            <div class="addr-row"><span class="k">Seolint Pass · SPASS</span><a href="https://bscscan.com/address/0xd0627633102ea1f47874229fbfd4a9cee20b360e" target="_blank" rel="noopener noreferrer">0xd0627633102ea1f47874229fbfd4a9cee20b360e ↗</a></div>
+            <div class="addr-row"><span class="k">Claim Nº 1</span><a href="https://bscscan.com/address/0x5ddfffdd14152f40252393ccc53a3e26939acfe5" target="_blank" rel="noopener noreferrer">0x5ddfffdd14152f40252393ccc53a3e26939acfe5 ↗</a></div>
+            <div class="addr-row"><span class="k">Claim Nº 2</span><a href="https://bscscan.com/address/0x8ed016d8fd6ec924dd1c910ed4bbf69050dba901" target="_blank" rel="noopener noreferrer">0x8ed016d8fd6ec924dd1c910ed4bbf69050dba901 ↗</a></div>
+            <div class="addr-row"><span class="k">Claim Nº 3</span><a href="https://bscscan.com/address/0xb6d32881e7d519636262d702652055fb12d4c87f" target="_blank" rel="noopener noreferrer">0xb6d32881e7d519636262d702652055fb12d4c87f ↗</a></div>
+            <p class="note" style="margin-top:16px">Every address opens on BscScan. The Scan reads its token and its Pass from these contracts, and all three claim contracts are registered on the Scan — the wiring is complete and verified on-chain.</p>
+          </div>
+          <div>
+            <h3 class="tok-h">Launch status</h3>
+            <ul class="status-list">
+              <li><span class="st done">Done</span><span><b>$LINT deployed</b> — supply fixed at 10,000,000,000, held by the owner wallet.</span></li>
+              <li><span class="st done">Done</span><span><b>Pass, Scan &amp; three claim contracts deployed</b> — all six contracts live on BNB Chain.</span></li>
+              <li><span class="st done">Done</span><span><b>All contracts wired</b> — token, Pass and claims connected to the Scan.</span></li>
+              <li><span class="st done">Done</span><span><b>Claim pool funded</b> — 2,000,000,000 LINT in each claim contract, verified on-chain; the owner wallet holds the remaining 4,000,000,000.</span></li>
+              <li><span class="st next">Next</span><span><b>Open mint</b> — the owner opens the Pass mint, sets the Scan&rsquo;s base URI and opens the Scan mint; Pearl Nº 1 begins to wind at the next 12:00 UTC seal.</span></li>
+            </ul>
+            <p class="note" style="margin-top:16px">The pool is funded and waiting, so the first Pearl&rsquo;s claims are payable from the moment it seals. One owner step remains — open the mint.</p>
+          </div>
         </div>
       </div>
     </section>

@@ -322,6 +322,14 @@ h2.head::after{content:"";display:block;width:54px;height:2px;background:var(--a
 .supply-key .sw-gold{background:var(--gold)}
 .supply-key .sw-dim{background:#241C0E;border:1px solid var(--line)}
 
+/* §05 listing countdown — a ruled ledger strip under the token table */
+.list-cd{margin-top:22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 2px 14px}
+.list-cd .lcd-label{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.lcd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.lcd-v{font-family:"IBM Plex Mono",monospace;font-size:30px;font-weight:600;color:var(--gold-bright);line-height:1;font-variant-numeric:tabular-nums}
+.lcd-k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.lcd-live{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright)}
+
 /* §05 contracts — live addresses + launch status */
 .contracts{margin-top:56px}
 .contracts .np-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px;flex-wrap:wrap}
@@ -853,10 +861,22 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
             <div class="row"><span class="k">Chain</span><span class="v">BNB Chain</span></div>
             <div class="row"><span class="k">Contract</span><span class="v gold">Deployed — BNB Chain</span></div>
             <div class="row"><span class="k">$LINT address</span><span class="v"><a href="https://bscscan.com/address/0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright);text-decoration:none;border-bottom:1px solid var(--line)">0x2b68…9ef7f ↗</a></span></div>
+            <div class="row"><span class="k">Listing</span><span class="v gold">15 Dec 2026 · 19:00 UTC · PancakeSwap</span></div>
+            <div class="row"><span class="k">Opening pool</span><span class="v">5 BNB + 1,000,000,000 LINT</span></div>
           </div>
           <div class="supply-bar" role="img" aria-label="Supply split: 60 percent of the 10 billion LINT supply sits in the claim pool, 40 percent outside it"><div class="pool"></div><div class="rest"></div></div>
           <div class="supply-key"><span><i class="sw-gold"></i>Claim pool · 6,000,000,000</span><span><i class="sw-dim"></i>Outside the pool · 4,000,000,000</span></div>
-          <p class="note" style="margin-top:16px">Every claim in §02 is paid out of the pool — 2,500, 12,500 or 60,000 LINT by the day&rsquo;s density, 250,000 for a Royal Node. The remaining 40% never enters a claim; it is held outside the pool contracts.</p>
+          <p class="note" style="margin-top:16px">Every claim in §02 is paid out of the pool — 2,500, 12,500 or 60,000 LINT by the day&rsquo;s density, 250,000 for a Royal Node. The remaining 40% never enters a claim; it is held outside the pool contracts — and 1,000,000,000 of it seeds the listing pool on 15 December 2026, paired with 5 BNB at 1 BNB : 200,000,000 LINT, so claimed LINT meets a public price the moment trading opens.</p>
+          <div class="list-cd">
+            <div class="lcd-label">Listing countdown — 15 Dec 2026 · 19:00 UTC</div>
+            <div class="lcd-grid" id="lcd-grid">
+              <div><div class="lcd-v" id="lcd-d">--</div><div class="lcd-k">Days</div></div>
+              <div><div class="lcd-v" id="lcd-h">--</div><div class="lcd-k">Hours</div></div>
+              <div><div class="lcd-v" id="lcd-m">--</div><div class="lcd-k">Minutes</div></div>
+              <div><div class="lcd-v" id="lcd-s">--</div><div class="lcd-k">Seconds</div></div>
+            </div>
+            <div class="lcd-live" id="lcd-live" hidden>$LINT is listed — trading live on PancakeSwap</div>
+          </div>
         </div>
         <div>
           <h3 class="tok-h">The Node — one Scan, one point</h3>
@@ -897,6 +917,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
               <li><span class="st done">Done</span><span><b>Mint open</b> — the Pass mint is open, the Scan&rsquo;s base URI is set and the Scan mint is open; Pearl Nº 1 is winding toward the next 12:00 UTC seal.</span></li>
               <li><span class="st done">Done</span><span><b>Sources verified open</b> — all six contracts are exact-match verified on Sourcify; anyone can read the exact code that runs on-chain.</span></li>
               <li><span class="st done">Done</span><span><b>This page is wired to the chain</b> — the <a href="#live-panel" style="color:var(--gold-bright)">Live panel</a> reads the contracts directly and sends real mint &amp; claim transactions from your wallet; the Pearl Checker and Royal Check read <span class="mono" style="font-size:12.5px">scanInfo()</span> live.</span></li>
+              <li><span class="st next">Next</span><span><b>$LINT listing — 15 December 2026, 19:00 UTC</b> — $LINT lists on PancakeSwap with the deepest opening pool: <b>5 BNB + 1,000,000,000 LINT</b>, drawn from the reserve outside the claim pool. The claim pool&rsquo;s 6,000,000,000 LINT stays untouched, and daily claims keep running straight through the listing.</span></li>
             </ul>
             <p class="note" style="margin-top:16px">The pool is funded, so the first Pearl&rsquo;s claims are payable from the moment it seals — and with the mint open, every lane on this page is live.</p>
           </div>
@@ -1406,6 +1427,21 @@ function fmt(ms){var s=Math.max(0,Math.floor(ms/1000));var hh=String(Math.floor(
 var chipCd=document.getElementById("chip-countdown"),boardCd=document.getElementById("board-countdown");
 function tickCountdown(){var txt=fmt(nextSeal()-Date.now());if(chipCd)chipCd.textContent=txt;if(boardCd)boardCd.textContent=txt;}
 tickCountdown(); setInterval(tickCountdown,1000);
+
+/* ---------- listing countdown — 15 Dec 2026, 19:00 UTC ---------- */
+var LIST_AT=Date.UTC(2026,11,15,19,0,0);
+var lcdD=document.getElementById("lcd-d"),lcdH=document.getElementById("lcd-h"),lcdM=document.getElementById("lcd-m"),lcdS=document.getElementById("lcd-s"),lcdGrid=document.getElementById("lcd-grid"),lcdLive=document.getElementById("lcd-live");
+function tickListing(){
+  if(!lcdD)return;
+  var diff=LIST_AT-Date.now();
+  if(diff<=0){if(lcdGrid)lcdGrid.style.display="none";if(lcdLive)lcdLive.hidden=false;return;}
+  var s=Math.floor(diff/1000);
+  lcdD.textContent=Math.floor(s/86400);
+  lcdH.textContent=String(Math.floor((s%86400)/3600)).padStart(2,"0");
+  lcdM.textContent=String(Math.floor((s%3600)/60)).padStart(2,"0");
+  lcdS.textContent=String(s%60).padStart(2,"0");
+}
+tickListing(); setInterval(tickListing,1000);
 (function(){var h=new Date().getUTCHours();var phase=(h>=12&&h<18)?"A":h>=18?"B":h<6?"C":"D";
   document.querySelectorAll("#timeline .tl-step").forEach(function(c){if(c.getAttribute("data-phase")===phase)c.classList.add("now");});
   var label=document.getElementById("phase-now");if(label)label.textContent=phase;})();

@@ -21,6 +21,36 @@ Site: https://seolint.xyz · X: https://x.com/Seolintfun
 Claim contracts are interchangeable: a Scan can be claimed on any one of the
 three, exactly once. The Scan contract records the claim.
 
+## Easy way — copy & run, no fields to fill
+
+Your agent reads your own wallet itself. Do NOT ask the user for an Agent ID,
+wallet address, or Scan number — check them on-chain instead.
+
+**Claim all my $LINT (easiest — use this first):**
+```
+SEOLINT — CLAIM ALL MY $LINT
+Seolint · BNB Chain (56)
+Scan 0xb4139ecb4f897e891f768d2ab3b5c3a380ecdcd3 · LINT 0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f · Pass 0xd0627633102ea1f47874229fbfd4a9cee20b360e · Claim1 0x5ddfffdd14152f40252393ccc53a3e26939acfe5
+Wallet: your connected wallet — no address to type. Execute now — if any check fails, stop & report only that check:
+1. Read Scan.totalMinted(), check ownerOf for every Scan, keep only mine with claimed=false
+2. For each mine: (amount, fee, open) = Claim1.preview(tokenId) — claim only if open=true
+3. Call Claim1.claim(tokenId) with value = fee exactly (0.000277 BNB, Royal 0.000555), one tx per Scan
+4. Report: tx hash per Scan · total LINT received
+```
+On the web (https://seolint.xyz) the same thing is 1 click: connect wallet →
+"My Scans · Claim in 1 click" → "Claim all mine". No Scan number to type.
+
+**Free mint (1 per wallet per day):**
+```
+SEOLINT — FREE MINT
+Seolint · BNB Chain (56)
+Scan 0xb4139ecb4f897e891f768d2ab3b5c3a380ecdcd3 · LINT 0x2b689d52a255405a4e2c1bbb61fa059914a9ef7f · Pass 0xd0627633102ea1f47874229fbfd4a9cee20b360e · Claim1 0x5ddfffdd14152f40252393ccc53a3e26939acfe5
+Wallet: your connected wallet — no address to type. Execute now — if any check fails, stop & report only that check:
+1. Check: mintOpen()=true · hasAgentId(wallet)=true · free not used today · freeRemainingInPhase()>0
+2. Call Scan.mintFree() — 0 BNB
+3. Report: tx hash · tokenId · kind, royal
+```
+
 ## The day
 
 - A Seolint day runs **12:00 UTC → 12:00 UTC** (the seal is at 12:00 UTC).
@@ -82,7 +112,10 @@ Pearl (density), counted at the seal:
 
 ## Claiming
 
-On any LintClaim contract:
+On any LintClaim contract — claim ALL your Scans at once if you can: read
+`totalMinted()`, keep the ones where `ownerOf(tokenId)` is your wallet and
+`scanInfo(tokenId).claimed` is false, then claim each one that is open.
+Single Scan:
 
 1. `preview(tokenId)` → `(amount, fee, open)` — the exact LINT amount, the
    BNB fee, and whether claims are open for that Scan yet.

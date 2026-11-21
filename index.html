@@ -606,6 +606,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
           <div><div class="v" id="lv-pool">—</div><div class="kk">Claim pool · LINT in 3 contracts</div></div>
           <div><div class="v gold" id="lv-mint">—</div><div class="kk">Scan mint · Pass mint</div></div>
         </div>
+        <p class="note" id="lv-claimed" style="margin:10px 0 0">Claimed so far: reading…</p>
         <p class="feedback" id="live-status" aria-live="polite">Reading the chain…</p>
         <div class="tool-row" style="margin-top:10px"><button class="btn" id="live-refresh" type="button">Refresh now</button></div>
         <div class="wallet-row">
@@ -632,13 +633,22 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
           <button class="btn" id="claim-check" type="button">Check claim</button>
           <button class="btn fill" id="claim-send" type="button" disabled>Claim $LINT</button>
         </div>
+        <div id="my-scans" style="margin-top:16px;display:none">
+          <div class="k">My Scans \u00b7 Claim in 1 click</div>
+          <p class="note" id="my-scans-text" style="margin:8px 0">Connect your wallet to see your Scans \u2014 no Scan number to type.</p>
+          <div id="my-scans-list"></div>
+          <div class="tool-row" style="margin-top:10px">
+            <button class="btn fill" id="claim-all" type="button" disabled>Claim all mine</button>
+            <button class="btn" id="my-scans-refresh" type="button">Find my Scans</button>
+          </div>
+        </div>
         <p class="feedback" id="tx-feedback" aria-live="polite"></p>
         <p class="note" id="claim-result" style="margin:8px 0 0"></p>
       </div>
       <div class="checker" id="prompts" style="margin-top:26px;scroll-margin-top:84px">
         <div class="k">Prompt Centre · Copy &amp; Run</div>
         <h3 style="font-family:'Anton',sans-serif;font-weight:400;font-size:27px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 10px;line-height:1.05">Short prompts. Run instantly.</h3>
-        <p class="note" style="margin:0 0 18px;max-width:680px">Pick a lane, fill 1–2 fields, copy, paste to your agent — done. No long brief, no back-and-forth: just address + call + execute. Full detail stays in <a href="https://seolint.xyz/skill.md" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright)">skill.md</a> if the agent needs it.</p>
+        <p class="note" style="margin:0 0 18px;max-width:680px">Pick a lane, copy, paste to your agent — done. No fields to fill — your agent reads your own wallet. Scan Nº is optional, only if you want one Scan. No long brief, no back-and-forth: just address + call + execute. Full detail stays in <a href="https://seolint.xyz/skill.md" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright)">skill.md</a> if the agent needs it.</p>
         <div class="lane-row" role="group" aria-label="Choose a prompt lane">
           <button type="button" class="lane-btn" data-lane-btn="free" aria-pressed="true">1 · Free thread</button>
           <button type="button" class="lane-btn" data-lane-btn="paid" aria-pressed="false">2 · Paid threads</button>
@@ -648,9 +658,9 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
           <button type="button" class="lane-btn" data-lane-btn="check" aria-pressed="false">6 · Check my Scan</button>
         </div>
         <div class="prompt-fields">
-          <label>Binance Agent ID<input type="text" id="pc-agent" placeholder="e.g. 123456" autocomplete="off"/></label>
+          <label>Agent ID (optional)<input type="text" id="pc-agent" placeholder="optional" autocomplete="off"/></label>
           <label>Your wallet (optional)<input type="text" id="pc-wallet" placeholder="0x…" autocomplete="off" spellcheck="false"/></label>
-          <label>Scan Nº (claim / check)<input type="number" id="pc-scan" placeholder="e.g. 3" min="1"/></label>
+          <label>Scan Nº (optional — one Scan only)<input type="number" id="pc-scan" placeholder="leave empty = all mine" min="1"/></label>
         </div>
         <p class="prompt-out" id="prompt-out" tabindex="0"></p>
         <div class="tool-row">
@@ -848,7 +858,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
       <div class="sec-head">
         <div class="sec-eyebrow"><span>§ 05 — Token &amp; Node</span><span class="r">Table 3 · The $LINT ledger</span></div>
         <h2 class="head">Ten billion threads. <em>One Node each.</em></h2>
-        <p class="lede">The token and the Node, taken whole. <strong>$LINT</strong> is fixed at <strong>10,000,000,000</strong> — three fifths of it held in the claim pool — and every Scan resolved into the day&rsquo;s Pearl becomes one <strong>Node</strong>. The system is live: $LINT, the Scan, the Pass and all three claim contracts are <strong>deployed on BNB Chain, wired together and funded</strong> — every address is listed under Contracts below — and <strong>the mint is open</strong>: Pearl Nº 1 is winding now, toward the next 12:00 UTC seal.</p>
+        <p class="lede">The token and the Node, taken whole. <strong>$LINT</strong> is fixed at <strong>10,000,000,000</strong> — three fifths of it held in the claim pool — and every Scan resolved into the day&rsquo;s Pearl becomes one <strong>Node</strong>. The system is live: $LINT, the Scan, the Pass and all three claim contracts are <strong>deployed on BNB Chain, wired together and funded</strong> — every address is listed under Contracts below — and <strong>the mint is open</strong>: A Pearl is winding now, toward the next 12:00 UTC seal.</p>
       </div>
       <div class="token-grid">
         <div>
@@ -914,7 +924,7 @@ footer.site{margin-top:96px;border-top:1px solid var(--line);padding:56px 0 48px
               <li><span class="st done">Done</span><span><b>Pass, Scan &amp; three claim contracts deployed</b> — all six contracts live on BNB Chain.</span></li>
               <li><span class="st done">Done</span><span><b>All contracts wired</b> — token, Pass and claims connected to the Scan.</span></li>
               <li><span class="st done">Done</span><span><b>Claim pool funded</b> — 2,000,000,000 LINT in each claim contract, verified on-chain; the owner wallet holds the remaining 4,000,000,000.</span></li>
-              <li><span class="st done">Done</span><span><b>Mint open</b> — the Pass mint is open, the Scan&rsquo;s base URI is set and the Scan mint is open; Pearl Nº 1 is winding toward the next 12:00 UTC seal.</span></li>
+              <li><span class="st done">Done</span><span><b>Mint open</b> — the Pass mint is open, the Scan&rsquo;s base URI is set and the Scan mint is open; A Pearl is winding toward the next 12:00 UTC seal.</span></li>
               <li><span class="st done">Done</span><span><b>Sources verified open</b> — all six contracts are exact-match verified on Sourcify; anyone can read the exact code that runs on-chain.</span></li>
               <li><span class="st done">Done</span><span><b>This page is wired to the chain</b> — the <a href="#live-panel" style="color:var(--gold-bright)">Live panel</a> reads the contracts directly and sends real mint &amp; claim transactions from your wallet; the Pearl Checker and Royal Check read <span class="mono" style="font-size:12.5px">scanInfo()</span> live.</span></li>
               <li><span class="st next">Next</span><span><b>$LINT listing — 30 November 2026, 19:00 UTC</b> — $LINT lists on PancakeSwap with the deepest opening pool: <b>5 BNB + 1,000,000,000 LINT</b>, drawn from the reserve outside the claim pool. The claim pool&rsquo;s 6,000,000,000 LINT stays untouched, and daily claims keep running straight through the listing.</span></li>
@@ -2464,14 +2474,18 @@ function downloadText(s,name){
   document.body.removeChild(a); setTimeout(function(){URL.revokeObjectURL(url);},800);
 }
 function buildPrompt(lane,d){
-  var agent=d.agent||"[Agent ID]", wallet=d.wallet||"[wallet]", scan=d.scan||"[Nº]";
-  var head="Seolint · BNB Chain (56) · Wallet: "+wallet+"\n"+S_ADDR+"\nExecute now — if any check fails, stop & report only that check:\n";
-  if(lane==="free") return "SEOLINT — FREE MINT\n"+head+"Agent ID: "+agent+"\n1. Check: mintOpen()=true · hasAgentId(wallet)=true · free not used today · freeRemainingInPhase()>0\n2. Call Scan.mintFree() — 0 BNB\n3. Report: tx hash · tokenId · scanInfo (kind, royal)";
-  if(lane==="paid") return "SEOLINT — PAID MINT (1 Scan)\n"+head+"1. Check: mintOpen()=true · walletDayCount<10 · do free first if unused\n2. price = Scan.nextPaidPrice(wallet) — if 0, stop\n3. Call Scan.mintPaid() with value = price exactly\n4. Report: tx hash · BNB paid · tokenId · scanInfo";
-  if(lane==="pass") return "SEOLINT — PASS MINT (no Agent ID)\n"+head+"1. Check: mintOpen()=true · passUsed today=false · day <1,200\n2. If Pass.balanceOf(wallet)=0: Pass.mint(1) with value = Pass.PRICE()\n3. Call Scan.mintWithPass() — 0 BNB\n4. Report: tx hash · tokenId · scanInfo";
-  if(lane==="claim") return "SEOLINT — CLAIM $LINT · Scan Nº "+scan+"\n"+head+"1. scanInfo("+scan+"): if claimed=true or owner≠wallet, stop & report\n2. (amount, fee, open) = Claim1.preview("+scan+") — if open=false, report claimOpensAt time & stop\n3. Call Claim1.claim("+scan+") with value = fee exactly\n4. Report: tx hash · LINT received";
-  if(lane==="burn") return "SEOLINT — BURN MINT (1× only)\n"+head+"1. Check: mintOpen()=true · day <1,200 · cost = Scan.BURN_COST()\n2. Show cost + balance & WAIT for my confirm — burn is final\n3. If needed: LINT.approve(Scan, cost)\n4. Call Scan.mintWithBurn() — 0 BNB\n5. Report: tx hash · tokenId · scanInfo";
-  return "SEOLINT — CHECK Scan Nº "+scan+" (read-only, send nothing)\nWallet: "+wallet+"\n"+S_ADDR+"\nRead & report in 1 reply: exists? (vs totalMinted) · scanInfo (day, kind, royal, claimed) · ownerOf · day tier · Claim1.preview (amount, fee, open) · claimOpensAt if closed.";
+  var scan=d.scan||"";
+  var head="Seolint \u00b7 BNB Chain (56)\n"+S_ADDR+"\nWallet: your connected wallet \u2014 no address to type. Execute now \u2014 if any check fails, stop & report only that check:\n";
+  if(lane==="free") return "SEOLINT \u2014 FREE MINT\n"+head+"1. Check: mintOpen()=true \u00b7 hasAgentId(wallet)=true \u00b7 free not used today \u00b7 freeRemainingInPhase()>0\n2. Call Scan.mintFree() \u2014 0 BNB\n3. Report: tx hash \u00b7 tokenId \u00b7 kind, royal";
+  if(lane==="paid") return "SEOLINT \u2014 PAID MINT (1 Scan)\n"+head+"1. Check: mintOpen()=true \u00b7 walletDayCount<10 \u00b7 do free first if unused\n2. price = Scan.nextPaidPrice(wallet) \u2014 if 0, stop\n3. Call Scan.mintPaid() with value = price exactly\n4. Report: tx hash \u00b7 BNB paid \u00b7 tokenId";
+  if(lane==="pass") return "SEOLINT \u2014 PASS MINT\n"+head+"1. Check: mintOpen()=true \u00b7 passUsed today=false\n2. If Pass.balanceOf(wallet)=0: Pass.mint(1), value = Pass.PRICE() (0.00123 BNB)\n3. Call Scan.mintWithPass() \u2014 0 BNB\n4. Report: tx hash \u00b7 tokenId";
+  if(lane==="claim"){
+    if(scan) return "SEOLINT \u2014 CLAIM $LINT \u00b7 Scan N\u00ba "+scan+"\n"+head+"1. scanInfo("+scan+"): if claimed=true or owner\u2260wallet, stop & report\n2. (amount, fee, open) = Claim1.preview("+scan+") \u2014 if open=false, report claimOpensAt & stop\n3. Call Claim1.claim("+scan+") with value = fee exactly (0.000277 BNB, Royal 0.000555)\n4. Report: tx hash \u00b7 LINT received";
+    return "SEOLINT \u2014 CLAIM ALL MY $LINT\n"+head+"1. Read Scan.totalMinted(), check ownerOf for every Scan, keep only mine with claimed=false\n2. For each mine: (amount, fee, open) = Claim1.preview(tokenId) \u2014 claim only if open=true\n3. Call Claim1.claim(tokenId) with value = fee exactly (0.000277 BNB, Royal 0.000555), one tx per Scan\n4. Report: tx hash per Scan \u00b7 total LINT received";
+  }
+  if(lane==="burn") return "SEOLINT \u2014 BURN MINT (1\u00d7 only)\n"+head+"1. Check: mintOpen()=true \u00b7 cost = Scan.BURN_COST() (50,000 LINT)\n2. Show cost + my LINT balance & WAIT for my confirm \u2014 burn is final\n3. If needed: LINT.approve(Scan, cost)\n4. Call Scan.mintWithBurn() \u2014 0 BNB \u00b7 Report tx hash \u00b7 tokenId";
+  if(scan) return "SEOLINT \u2014 CHECK Scan N\u00ba "+scan+" (read-only, send nothing)\n"+S_ADDR+"\nRead & report in 1 reply: exists? (vs totalMinted) \u00b7 scanInfo (day, kind, royal, claimed) \u00b7 ownerOf \u00b7 Claim1.preview (amount, fee, open) \u00b7 claimOpensAt if closed.";
+  return "SEOLINT \u2014 CHECK MY SCANS (read-only, send nothing)\n"+S_ADDR+"\nRead & report in 1 reply: my Scans (ownerOf = my wallet) \u00b7 scanInfo each \u00b7 Claim1.preview each (amount, fee, open) \u00b7 total LINT I can claim now.";
 }
 var out=document.getElementById("prompt-out"), fb=document.getElementById("prompt-feedback");
 var laneBtns=Array.prototype.slice.call(document.querySelectorAll("[data-lane-btn]"));
@@ -2609,6 +2623,7 @@ function refresh(){
       setText("lv-threads",fmtInt(minted)); setText("lv-agents",fmtInt(parts)); setText("lv-free",fmtInt(free));
       setText("lv-scans",r[3]?fmtInt(wNum(r[3],0)):"—"); setText("lv-passes",r[4]?fmtInt(wNum(r[4],0)):"—");
       setText("lv-pool",fmtLint(pool)); setText("ledger-free",fmtInt(free));
+      setText("lv-claimed","Claimed so far: "+fmtLint(6000000000000000000000000000n-pool)+" LINT \u00b7 pool left "+fmtLint(pool)+" LINT");
       setText("lv-mint",(scanOpen?"OPEN":"CLOSED")+" · "+(passOpen?"OPEN":"CLOSED"));
       setText("chip-pearl",String(pearl));
       setText("chip-mint",scanOpen&&passOpen?"MINT OPEN":(scanOpen||passOpen?"MINT PARTLY OPEN":"MINT CLOSED"));
@@ -2662,6 +2677,61 @@ function refreshMine(){
     });
   }).catch(function(){});
 }
+/* ---------- My Scans — 1-click claim, no Scan number to type ---------- */
+var myScansCache=[];
+function listMyScans(){
+  var box=$("my-scans"), txt=$("my-scans-text"), list=$("my-scans-list"), allBtn=$("claim-all");
+  if(!box)return;
+  box.style.display="block";
+  if(!account){ if(txt)txt.textContent="Connect your wallet to see your Scans \u2014 no Scan number to type."; if(list)list.innerHTML=""; if(allBtn)allBtn.disabled=true; return; }
+  if(txt)txt.textContent="Finding your Scans on-chain\u2026";
+  slTotalMinted().then(function(tm){
+    if(!tm){ if(txt)txt.textContent="No Scans minted yet."; if(list)list.innerHTML=""; if(allBtn)allBtn.disabled=true; return; }
+    var ids=[]; for(var i=1;i<=tm;i++)ids.push(i);
+    var mine=[];
+    function chunk(k){
+      if(k>=ids.length){
+        if(!mine.length){ if(txt)txt.textContent="Your wallet holds no Scan yet \u2014 mint free first (1 per day, Agent ID)."; if(list)list.innerHTML=""; if(allBtn)allBtn.disabled=true; return Promise.resolve(); }
+        return Promise.all(mine.map(function(n){ return Promise.all([slScanInfo(n),slClaimPreview(n)]).then(function(r){ return {n:n,info:r[0],pv:r[1]}; }); })).then(function(rows){
+          myScansCache=rows.filter(function(r){ return r.info&&!r.info.claimed&&r.pv&&r.pv.open; });
+          var openRows=myScansCache;
+          var total=rows.reduce(function(s,r){ return s+((r.pv&&r.pv.open&&!r.info.claimed)?Number(r.pv.amount):0); },0);
+          if(txt)txt.textContent="You hold "+rows.length+" Scan(s) \u00b7 "+openRows.length+" ready to claim now \u00b7 "+fmtInt(total)+" LINT in total. One click each below, or Claim all mine.";
+          if(list)list.innerHTML=rows.map(function(r){
+            var st=r.info.claimed?"already claimed":(r.pv&&r.pv.open?fmtInt(r.pv.amount)+" LINT \u00b7 fee "+r.pv.fee+" BNB":"opens later");
+            var btn=(r.info.claimed||!(r.pv&&r.pv.open))?"":" <button class=\"btn\" type=\"button\" data-claim-one=\""+r.n+"\">Claim</button>";
+            return '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line-soft)"><span>Scan N\u00ba '+r.n+(r.info.royal?" \u00b7 ROYAL":"")+' \u00b7 Pearl N\u00ba '+(r.info.dayId-PEARL_EPOCH)+' \u00b7 '+st+'</span>'+btn+'</div>';
+          }).join("");
+          if(list)list.querySelectorAll("[data-claim-one]").forEach(function(b){ b.addEventListener("click",function(){
+            var n=parseInt(b.getAttribute("data-claim-one"),10);
+            var row=myScansCache.filter(function(r){ return r.n===n; })[0];
+            if(!row)return;
+            sendTx(ADDR.claim1,SEL.claim+uArg(n),row.pv.feeWei,"claim("+n+") \u2014 "+fmtInt(row.pv.amount)+" LINT").then(function(){ listMyScans(); });
+          }); });
+          if(allBtn)allBtn.disabled=openRows.length===0;
+        });
+      }
+      var batch=ids.slice(k,k+25);
+      return Promise.all(batch.map(function(n){ return slOwnerOf(n).then(function(o){ return {n:n,o:o}; }); })).then(function(rs){
+        rs.forEach(function(r){ if(r.o&&account&&r.o.toLowerCase()===account.toLowerCase())mine.push(r.n); });
+        return chunk(k+25);
+      });
+    }
+    return chunk(0);
+  }).catch(function(){ if(txt)txt.textContent="Chain read failed \u2014 tap Find my Scans again."; });
+}
+function claimAllMine(){
+  if(!needWallet()||!myScansCache.length)return;
+  var next=myScansCache.slice();
+  (function step(){
+    if(!next.length){ listMyScans(); refresh(); return; }
+    var r=next.shift();
+    slClaimPreview(r.n).then(function(pv){
+      if(!pv||!pv.open){ step(); return; }
+      sendTx(ADDR.claim1,SEL.claim+uArg(r.n),pv.feeWei,"claim("+r.n+") \u2014 "+fmtInt(pv.amount)+" LINT").then(function(){ step(); });
+    }).catch(function(){ step(); });
+  })();
+}
 function connect(){
   if(!window.ethereum){ fb("No wallet found in this browser — open this page inside a wallet browser (MetaMask, Trust Wallet, Binance Wallet) to mint or claim. Every read on this page works without one.",false); return; }
   window.ethereum.request({method:"eth_requestAccounts"}).then(function(accs){
@@ -2681,14 +2751,14 @@ function connect(){
     var wb=$("wallet-btn"); if(wb)wb.textContent="Wallet connected";
     setText("wallet-addr",account+" · BNB Chain");
     fb("Wallet connected — your numbers for today are below the panel stats.",true);
-    refreshMine();
+    refreshMine(); listMyScans();
   }).catch(function(e){
     fb(e&&e.code===4001?"Connection rejected in the wallet — nothing was sent.":"Could not connect: "+((e&&e.message)||e),false);
   });
 }
 if(window.ethereum&&window.ethereum.on){
   window.ethereum.on("accountsChanged",function(accs){ account=(accs&&accs[0])?accs[0]:null; claimState=null; var cs=$("claim-send"); if(cs)cs.disabled=true;
-    if(account){ setText("wallet-addr",account+" · BNB Chain"); refreshMine(); } else { setText("wallet-addr","No wallet connected — reads work without one; minting and claiming need your wallet."); var g=$("my-grid"); if(g)g.style.display="none"; } });
+    if(account){ setText("wallet-addr",account+" · BNB Chain"); refreshMine(); listMyScans(); } else { setText("wallet-addr","No wallet connected — reads work without one; minting and claiming need your wallet."); var g=$("my-grid"); if(g)g.style.display="none"; } });
   window.ethereum.on("chainChanged",function(){ refresh(); if(account)refreshMine(); });
 }
 function sendTx(to,data,valueWei,label){
@@ -2796,6 +2866,8 @@ guard("claim-check",function(){
     });
   }).catch(function(){ if(claimResult)claimResult.textContent="The chain read failed — try again in a moment."; });
 });
+guard("my-scans-refresh",function(){ listMyScans(); });
+guard("claim-all",function(){ claimAllMine(); });
 guard("claim-send",function(){
   if(!needWallet()||!claimState)return;
   slClaimPreview(claimState.n).then(function(pv){
@@ -2806,6 +2878,7 @@ guard("claim-send",function(){
 
 /* first read on load, then every minute */
 refresh();
+listMyScans();
 setInterval(refresh,60000);
 })();
 </script>

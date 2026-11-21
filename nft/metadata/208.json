@@ -1,0 +1,31 @@
+{
+  "name": "Seolint Scan N\u00ba 208",
+  "description": "A Scan of the Seolint daily strand \u2014 one node of the day's Pearl on BNB Chain. Claims $LINT once, after the day seals; claims never expire.",
+  "image": "https://seolint.xyz/nft/images/208.jpg",
+  "attributes": [
+    {
+      "trait_type": "Day",
+      "value": 20777
+    },
+    {
+      "trait_type": "Day Index",
+      "value": 208
+    },
+    {
+      "trait_type": "Kind",
+      "value": "Wool"
+    },
+    {
+      "trait_type": "Royal",
+      "value": "No"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Lustrous"
+    },
+    {
+      "trait_type": "Claim (LINT)",
+      "value": 60000
+    }
+  ]
+}

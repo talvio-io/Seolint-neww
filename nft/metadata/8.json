@@ -21,11 +21,11 @@
     },
     {
       "trait_type": "Tier",
-      "value": "Matte"
+      "value": "Lustrous"
     },
     {
       "trait_type": "Claim (LINT)",
-      "value": 2500
+      "value": 60000
     }
   ]
 }
